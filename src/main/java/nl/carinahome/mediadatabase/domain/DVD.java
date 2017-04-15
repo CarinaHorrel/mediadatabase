@@ -14,6 +14,9 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import nl.carinahome.mediadatabase.domain.DVD;
+
+
 @Entity
 public class DVD {
 	@Id
@@ -22,6 +25,7 @@ public class DVD {
 	
 	@Column(unique=true, nullable=false)
 	private String title;
+	
 	private int year;
 	private String origin;
 	private boolean bonus;
@@ -131,6 +135,42 @@ public class DVD {
 		this.actors = actors;
 	}
 	
+	
+	/* =====================================
+	   Removing and adding actors by C. Horrel
+       ===================================== */
+	
+	public void removeActorFromActors(Actor actor) {
+		this.actors.remove(actor);
+	}
+	
+	public boolean isLinkedActor(Actor linkedActor) {
+		for (Actor actor : actors) {
+			if (actor.getId() == linkedActor.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/* =====================================
+	   Removing and adding actors by C. Horrel
+    ===================================== */
+	
+	public void removeGenreFromGenres(Genre genre) {
+		this.genres.remove(genre);
+	}
+	
+	public boolean isLinkedGenre(Genre linkedGenre) {
+		for (Genre genre : genres) {
+			if (genre.getId() == linkedGenre.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 /* =====================================
 	Removing and adding genres
    ===================================== */
@@ -173,45 +213,68 @@ public class DVD {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + year;
-		return result;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
+//		result = prime * result + (int) (id ^ (id >>> 32));
+//		result = prime * result + ((title == null) ? 0 : title.hashCode());
+//		result = prime * result + year;
+//		return result;
+//	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
+	/**
+	 * Deze methode overrides de standaard equals methode, zodat 
+	 * twee objecten gelijk zijn, wanneer ze van dezelfde class zijn
+	 * en hun id gelijk is.
+	 * @param obj Het object dat vergeleken moet worden op gelijkheid.
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DVD other = (DVD) obj;
-		if (actors == null) {
+		// standaard vergelijkingen/voorwaarden
+		if (this == obj) return true;
+		if (obj == null) return false;
+		
+		// Classes ongelijk -> nooit gelijk
+		if (this.getClass() == obj.getClass()) {
+			// Tot dus ver alles goed, dus tijd om te gaan casten naar Actor en de id's te gaan vergelijken
+			
+		DVD other = (DVD) obj;		
+		if (this.actors == null) {
 			if (other.actors != null)
 				return false;
-		} else if (!actors.equals(other.actors))
+		} else if (!this.actors.equals(other.actors))
 			return false;
+		if (this.genres == null) {
+			if (other.genres != null)
+				return false;
+		} else if (!this.genres.equals(other.genres))
+			return false;
+		
 		if (id != other.id)
 			return false;
-		if (title == null) {
+		
+		if (this.title == null) {
 			if (other.title != null)
 				return false;
-		} else if (!title.equals(other.title))
+		} else if (!this.title.equals(other.title))
 			return false;
-		if (year != other.year)
-			return false;
-		return true;
-	}
-	
-	
 		
+		if (this.year == other.year){
+			return true; 
+		}else {
+			return false;
+		}
+		
+		}else {  // part (getClass() != obj.getClass())
+			return false;
+		}
+	}
 }
+	
+
+
+
