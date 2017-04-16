@@ -7,16 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Actor {
+public class Artist {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@Column(nullable=false)
-	private String firstName;
+	private String artistName;
 	
-	@Column(nullable=false)
-	private String lastName;
 	/**
 	 * @return the id
 	 */
@@ -30,29 +28,18 @@ public class Actor {
 		this.id = id;
 	}
 	/**
-	 * @return the firstName
+	 * @return the artistName
 	 */
-	public String getFirstName() {
-		return firstName;
+	public String getArtistName() {
+		return artistName;
 	}
 	/**
-	 * @param firstName the firstName to set
+	 * @param artistName the artistName to set
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setArtistName(String artistName) {
+		this.artistName = artistName;
 	}
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastName;
-	}
-	/**
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+	
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -86,20 +73,14 @@ public class Actor {
 		if (this.getClass() == obj.getClass()) {
 			// Tot dus ver alles goed, dus tijd om te gaan casten naar Actor en de id's te gaan vergelijken
 			
-		Actor other = (Actor) obj;
+		Artist other = (Artist) obj;
 		
-		if (this.firstName == null) {
-			if (other.firstName != null)
+		if (this.artistName == null) {
+			if (other.artistName != null)
 				return false;
-		} else if (!this.firstName.equals(other.firstName))
+		} else if (!this.artistName.equals(other.artistName))
 			return false;
-		
-		if (this.lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!this.lastName.equals(other.lastName))
-			return false;
-		
+				
 		if (this.id == other.id) {
 			return true;
 		} else {

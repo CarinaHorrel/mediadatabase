@@ -14,11 +14,11 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import nl.carinahome.mediadatabase.domain.DVD;
+import nl.carinahome.mediadatabase.domain.CD;
 
 
 @Entity
-public class DVD {
+public class CD {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -29,7 +29,7 @@ public class DVD {
 	@Column(nullable=false)
 	private int year;
 	private String origin;
-	private boolean bonus;
+	
 	private String remarks;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
@@ -38,7 +38,7 @@ public class DVD {
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
-	private List<Actor> actors = new ArrayList<Actor>();
+	private List<Artist> artists = new ArrayList<Artist>();
 	/**
 	 * @return the id
 	 */
@@ -87,18 +87,7 @@ public class DVD {
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	/**
-	 * @return the bonus
-	 */
-	public boolean isBonus() {
-		return bonus;
-	}
-	/**
-	 * @param bonus the bonus to set
-	 */
-	public void setBonus(boolean bonus) {
-		this.bonus = bonus;
-	}
+	
 	/**
 	 * @return the remarks
 	 */
@@ -124,30 +113,30 @@ public class DVD {
 		this.genres = genres;
 	}
 	/**
-	 * @return the actors
+	 * @return the artists
 	 */
-	public List<Actor> getActors() {
-		return actors;
+	public List<Artist> getArtists() {
+		return artists;
 	}
 	/**
-	 * @param actors the actors to set
+	 * @param artists the artists to set
 	 */
-	public void setActors(List<Actor> actors) {
-		this.actors = actors;
+	public void setArtists(List<Artist> artists) {
+		this.artists = artists;
 	}
 	
 	
 	/* =====================================
-	   Removing and adding actors by C. Horrel
+	   Removing and adding artists by C. Horrel
        ===================================== */
 	
-	public void removeActorFromActors(Actor actor) {
-		this.actors.remove(actor);
+	public void removeArtistFromArtsts(Artist artist) {
+		this.artists.remove(artist);
 	}
 	
-	public boolean isLinkedActor(Actor linkedActor) {
-		for (Actor actor : actors) {
-			if (actor.getId() == linkedActor.getId()) {
+	public boolean isLinkedActor(Artist linkedArtist) {
+		for (Artist artist : artists) {
+			if (artist.getId() == linkedArtist.getId()) {
 				return true;
 			}
 		}
@@ -155,7 +144,7 @@ public class DVD {
 	}
 	
 	/* =====================================
-	   Removing and adding actors by C. Horrel
+	   Removing and adding artists by C. Horrel
     ===================================== */
 	
 	public void removeGenreFromGenres(Genre genre) {
@@ -193,22 +182,22 @@ public class DVD {
 /* =====================================
 	Removing and adding actors
    ===================================== */
-	public void addActor(Actor actor){
-		this.actors.add(actor);
+	public void addArtist(Artist artist){
+		this.artists.add(artist);
 	}
-	public void removeAllActors() {
-		this.actors.clear();
+	public void removeAllArtists() {
+		this.artists.clear();
 	}
-	public boolean removeOneActor(Actor actor) {
-		return this.actors.remove(actor);
+	public boolean removeOneArtist(Artist artist) {
+		return this.artists.remove(artist);
 	}
 	
-	public void dvdCopy(DVD dvd) {
-		this.setRemarks(dvd.getRemarks());
-		this.setTitle(dvd.getTitle());
-		this.setYear(dvd.getYear());
-		this.setOrigin(dvd.getOrigin());
-		this.setBonus(dvd.isBonus());
+	public void cdCopy(CD cd) {
+		this.setRemarks(cd.getRemarks());
+		this.setTitle(cd.getTitle());
+		this.setYear(cd.getYear());
+		this.setOrigin(cd.getOrigin());
+		
 	}
 	
 	/* (non-Javadoc)
@@ -243,11 +232,11 @@ public class DVD {
 		if (this.getClass() == obj.getClass()) {
 			// Tot dus ver alles goed, dus tijd om te gaan casten naar Actor en de id's te gaan vergelijken
 			
-		DVD other = (DVD) obj;		
-		if (this.actors == null) {
-			if (other.actors != null)
+		CD other = (CD) obj;		
+		if (this.artists == null) {
+			if (other.artists != null)
 				return false;
-		} else if (!this.actors.equals(other.actors))
+		} else if (!this.artists.equals(other.artists))
 			return false;
 		if (this.genres == null) {
 			if (other.genres != null)

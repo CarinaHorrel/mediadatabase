@@ -120,9 +120,9 @@ public class DVDService {
 		
 	}
 	
-//	public List<DVD> jojo(String title){
-//		return dvdRepository.findByTitle(title);
-//	}
+	public List<DVD> jojo(String title){
+		return dvdRepository.findByTitle(title);
+	}
 	
 	
 }
