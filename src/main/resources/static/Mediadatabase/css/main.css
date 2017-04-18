@@ -1,0 +1,79 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+  color: #665544;
+  text-align: center
+}
+
+.lblCdIn {
+	width: 100px;
+	display: inline-block;
+}
+
+div {
+  width: 65%;
+  display: inline-block;
+}
+
+#nav, #movies, #music, #books{
+    background-color: #efefef;
+    margin-top: 20px;
+    padding: 10px 0px 5px 0px;
+}
+#movies, #music, #books{
+    height: 100px;
+}
+li{
+    display:inline;
+    padding:5px;
+}
+
+#divPoster {
+  width: 20%;
+  display: inline-block;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  z-index: 2;
+}
+
+#dvdPoster {
+  width: 100%;
+}
+
+button {
+	margin: 5px;
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+}
+
+h3 {
+	margin: 10px 0px 5px 0px;
+}
+
+p {
+  margin: 5px 0px 10px 0px;
+}
+
+#dvd_actors, #dvd_genres {
+	width: 250px;
+  padding: 8px 20px 8px 8px;
+}
+
+
+#divPoster {
+  width: 20%;
+  display: inline-block;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  z-index: 2;
+}
+
+#cdPoster {
+  width: 100%;
+}
+
+#cd_artists, #cd_genres {
+	width: 250px;
+  padding: 8px 20px 8px 8px;
+}
