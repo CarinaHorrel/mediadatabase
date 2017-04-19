@@ -11,6 +11,7 @@
 	    <h1>CD</h1>
 	    <div id="divCdSelect">
 			<h2>CD Select</h2>
+			<button onclick="getExternalData('api/cd')">getCD</button>
 			<!--<button onclick="getDataCD('api/cd')">getCD</button>-->
 			<select id="CDs" onchange="selectCD(event)"></select>
 			<h3>Genre</h3>
@@ -54,8 +55,8 @@
 			<h2>Artist Info</h2>
 	  	    id_artist:<input type="text" id="id_artist"/><br />
 			artistname:<input type="text" id="artistname"/><br />
-			<button onclick="addArtist()">AddActor</button>
-            <button onclick="putDataArtist('api/artist')">updateActor</button>
+			<button onclick="addArtist()">AddArtist</button>
+            <button onclick="putDataArtist('api/artist')">updateArtist</button>
 			<button onclick="deleteArtist('api/artist', 'artist')">deleteArtist</button>
 			<!--<button onclick="getDataArtist('api/artist')">getArtist</button><br>-->
 		</div>

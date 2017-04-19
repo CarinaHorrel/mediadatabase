@@ -25,7 +25,7 @@ function addCD(){
     postData('api/cd', cd, "POST");
 }
 
-function adArtisttoCD(){
+function addArtisttoCD(){
     var id = document.getElementById("id").value;
     var id_artist = document.getElementById("cd_artists").value;
     postData('api/cd/'+id+'/artist/'+id_artist, "", "PUT");
@@ -75,6 +75,7 @@ function putDataGenre(){
     var genre = '{"id":'+id_genre+',"genreName":"'+genrename+'"}'; 
     postData('api/genre', genre, "PUT");
 }
+
 function postData(api, data, crud){
     console.log(data);
     console.log(crud);
@@ -291,7 +292,7 @@ function getCDByID(id){
             document.getElementById("year").value=cd.year;
             document.getElementById("origin").value=cd.origin;
             document.getElementById("remarks").value=cd.remarks;
-            getExternalData(cd);
+           // getExternalData(cd);
         }
     };
     xhttp.open("GET", "http://localhost:8082/api/cd/"+id);
@@ -303,20 +304,37 @@ https://freemusicarchive.org/api/get/artists.xml?api_key=KL1GPC1VXE9PTYKA
 
 function getExternalData(cd) {
     //var url = "http://www.omdbapi.com/?t=";
-    url="https://freemusicarchive.org/api/get/artists.xml?api_key=KL1GPC1VXE9PTYKA";
+    // var url="http://ws.audioscrobbler.com/2.0/?method=ABBA.getSimilar&api_key=5e4225aa6762d769875182b25f45f325&format=json";
+// http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=After+The+Burial&api_key=5e4225aa6762d769875182b25f45f32&format=json;
+
+var url="http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=5e4225aa6762d769875182b25f45f325&artist=Cher&album=Believe&format=json";
+
     //url += cd.title;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var extCD = JSON.parse(this.responseText);
-            console.log(extCD);
-            //document.getElementById("cdPlot").textContent = extCD.Plot;
+          //  console.log(extCD);
+           //  document.getElementById("cdPlot").textContent = extCD.album.tracks;
+              console.log(extCD.album);
+
+
+              console.log(extCD.album.name);
+               console.log(extCD.album.artist);
+                 console.log(extCD.album.tracks);
+                 console.log(extCD.album.tracks.track[3].name);
+
+                 for  (var j=0; j<extCD.album.tracks.track.length; j++){
+                     //alert();
+                     document.getElementById("cdPlot").innerHTML += "<br>" +extCD.album.tracks.track[j].name;
+                    // alert();
+                 }
+            //document.getElementById("cdPlot").textContent = extCD.aRows[i];
             //document.getElementById("cdPoster").src = extCD.Poster;
             //document.getElementById("cdGenre").textContent = extCD.Genre;
         }
     };
     xhttp.open("GET", url);
     xhttp.send();
-
-
 }
+
