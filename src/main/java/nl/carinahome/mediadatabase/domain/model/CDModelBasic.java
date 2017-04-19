@@ -32,6 +32,9 @@ public class CDModelBasic {
 		return this.cd.getRemarks();
 	}
 
+	public boolean isChecked() {
+		return this.cd.isChecked();
+	}
 	/**
 	 * To prevent going in circles, only Artist id's are returned
 	 * @return the Artist id's

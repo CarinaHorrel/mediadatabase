@@ -14,11 +14,11 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import nl.carinahome.mediadatabase.domain.DVD;
+import nl.carinahome.mediadatabase.domain.Book;
 
 
 @Entity
-public class DVD {
+public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -29,8 +29,8 @@ public class DVD {
 	@Column(nullable=false)
 	private int year;
 	
+	private long isbn;
 	private String origin;
-	private boolean bonus;
 	private String remarks;
 	private boolean checked;
 	
@@ -40,7 +40,7 @@ public class DVD {
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
-	private List<Actor> actors = new ArrayList<Actor>();
+	private List<Writer> writers = new ArrayList<Writer>();
 	/**
 	 * @return the id
 	 */
@@ -77,6 +77,21 @@ public class DVD {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	
+	/**
+	 * @return the isbn
+	 */
+	public long getIsbn() {
+		return isbn;
+	}
+	/**
+	 * @param isbn the isbn to set
+	 */
+	public void setIsbn(long isbn) {
+		this.isbn = isbn;
+	}
+	
+	
 	/**
 	 * @return the origin
 	 */
@@ -89,21 +104,6 @@ public class DVD {
 	public void setOrigin(String origin) {
 		this.origin = origin;
 	}
-	/**
-	 * @return the bonus
-	 */
-	public boolean isBonus() {
-		return bonus;
-	}
-	/**
-	 * @param bonus the bonus to set
-	 */
-	public void setBonus(boolean bonus) {
-		this.bonus = bonus;
-	}
-	/**
-	 * @return the remarks
-	 */
 	public String getRemarks() {
 		return remarks;
 	}
@@ -126,6 +126,9 @@ public class DVD {
 	public void setChecked(boolean checked) {
 		this.checked = checked;
 	}
+	/**
+	 * @return the remarks
+	 */
 	
 	/**
 	 * @return the genres
@@ -140,30 +143,30 @@ public class DVD {
 		this.genres = genres;
 	}
 	/**
-	 * @return the actors
+	 * @return the artists
 	 */
-	public List<Actor> getActors() {
-		return actors;
+	public List<Writer> getWriters() {
+		return writers;
 	}
 	/**
-	 * @param actors the actors to set
+	 * @param artists the artists to set
 	 */
-	public void setActors(List<Actor> actors) {
-		this.actors = actors;
+	public void setWriters(List<Writer> writers) {
+		this.writers = writers;
 	}
 	
 	
 	/* =====================================
-	   Removing and adding actors by C. Horrel
+	   Removing and adding artists by C. Horrel
        ===================================== */
 	
-	public void removeActorFromActors(Actor actor) {
-		this.actors.remove(actor);
+	public void removeWriterFromWriters(Writer writer) {
+		this.writers.remove(writer);
 	}
 	
-	public boolean isLinkedActor(Actor linkedActor) {
-		for (Actor actor : actors) {
-			if (actor.getId() == linkedActor.getId()) {
+	public boolean isLinkedWriter(Writer linkedWriter) {
+		for (Writer writer : writers) {
+			if (writer.getId() == linkedWriter.getId()) {
 				return true;
 			}
 		}
@@ -171,7 +174,7 @@ public class DVD {
 	}
 	
 	/* =====================================
-	   Removing and adding actors by C. Horrel
+	   Removing and adding artists by C. Horrel
     ===================================== */
 	
 	public void removeGenreFromGenres(Genre genre) {
@@ -207,25 +210,26 @@ public class DVD {
 	}
 	
 /* =====================================
-	Removing and adding actors
+	Removing and adding writer
    ===================================== */
-	public void addActor(Actor actor){
-		this.actors.add(actor);
+	public void addWriter(Writer writer){
+		this.writers.add(writer);
 	}
-	public void removeAllActors() {
-		this.actors.clear();
+	public void removeAllWriters() {
+		this.writers.clear();
 	}
-	public boolean removeOneActor(Actor actor) {
-		return this.actors.remove(actor);
+	public boolean removeOneWriter(Writer writer) {
+		return this.writers.remove(writer);
 	}
 	
-	public void dvdCopy(DVD dvd) {
-		this.setRemarks(dvd.getRemarks());
-		this.setTitle(dvd.getTitle());
-		this.setYear(dvd.getYear());
-		this.setOrigin(dvd.getOrigin());
-		this.setBonus(dvd.isBonus());
-		this.setChecked(dvd.isChecked());
+	public void bookCopy(Book book) {
+		this.setRemarks(book.getRemarks());
+		this.setTitle(book.getTitle());
+		this.setYear(book.getYear());
+		this.setIsbn(book.getIsbn());
+		this.setOrigin(book.getOrigin());
+		this.setChecked(book.isChecked());
+		
 	}
 	
 	/* (non-Javadoc)
@@ -235,7 +239,7 @@ public class DVD {
 //	public int hashCode() {
 //		final int prime = 31;
 //		int result = 1;
-//		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
+//		result = prime * result + ((writers == null) ? 0 : writers.hashCode());
 //		result = prime * result + (int) (id ^ (id >>> 32));
 //		result = prime * result + ((title == null) ? 0 : title.hashCode());
 //		result = prime * result + year;
@@ -260,11 +264,11 @@ public class DVD {
 		if (this.getClass() == obj.getClass()) {
 			// Tot dus ver alles goed, dus tijd om te gaan casten naar Actor en de id's te gaan vergelijken
 			
-		DVD other = (DVD) obj;		
-		if (this.actors == null) {
-			if (other.actors != null)
+		Book other = (Book) obj;		
+		if (this.writers == null) {
+			if (other.writers != null)
 				return false;
-		} else if (!this.actors.equals(other.actors))
+		} else if (!this.writers.equals(other.writers))
 			return false;
 		if (this.genres == null) {
 			if (other.genres != null)
@@ -286,7 +290,7 @@ public class DVD {
 		}else {
 			return false;
 		}
-		
+				
 		}else {  // part (getClass() != obj.getClass())
 			return false;
 		}

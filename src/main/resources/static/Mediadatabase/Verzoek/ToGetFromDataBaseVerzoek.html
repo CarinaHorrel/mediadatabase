@@ -1,37 +1,39 @@
 <html>
 	<head>
-		<title>Database CDs</title>
-		<script src="../javascript/cd.js"></script>
-		<link rel="stylesheet" type="text/css" href="../css/cd.css" />
+		<title>Verzoeken</title>
+		<script src="../javascript/verzoek.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/verzoek.css" />
 		
 	</head>
 	<body>
 		<!--RESULT SERVER: -->
 	    <hr>
-	    <h1>CD</h1>
-	    <div id="divCdSelect">
-			<h2>CD Select</h2>
-			<!--<button onclick="getDataCD('api/cd')">getCD</button>-->
-			<select id="CDs" onchange="selectCD(event)"></select>
-			<h3>Genre</h3>
-			<p id="cdGenre"></p>
-			<h3>Plot</h3>
-			<p id="cdPlot"></p>
-	    </div>
-	    <div id="divPoster">
-			<img id="cdPoster" src="">
-	    </div>
-		<div id="divCdIn">
-			<h2>CD input</h2>
-			<label class="lblCdIn">id:</label>      <input type="text" id="id"/><br />
-			<label class="lblCdIn">title:</label>   <input type="text" id="title"/><br />
-			<label class="lblCdIn">year:</label>    <input type="text" id="year"/><br />
-			<label class="lblCdIn">origin:</label>  <input type="text" id="origin"/><br />
-			<label class="lblCdIn">remarks:</label> <input type="text" id="remarks"/><br />
-			<button onclick="addCD()">AddCD</button> 
-			<button onclick="putDataCD('api/cd')">updateCD</button>
+	    <h1>Verzoek</h1>
+
+		
+			<label class="lblCdIn">Aanvrager:</label>      <input type="text" id="id"/><br />
+			<label class="lblCdIn">Request:</label>   <input type="text" id="title"/><br />
+			<label class="lblCdIn">Url:</label>    <input type="text" id="year"/><br />
+			<label class="lblCdIn">Meegeven:</label>  <input type="text" id="origin"/><br />
+			<label class="lblCdIn">Terug:</label> <input type="text" id="remarks"/><br />
+			<label class="lblCdIn">Omschrijving:</label>  <input type="text" id="origin"/><br />
+			<label class="lblCdIn">Status:</label> <input type="text" id="remarks"/><br />
+			
+			<button onclick="addCD()">AddDVD</button> 
+			<button onclick="putDataDVD('api/cd')">updateCD</button>
 			<button onclick="deleteCD('api/cd', 'cd')">deleteCD</button>
 		</div>
+		
+		
+		th width = 7%>Aanvrager</th>
+            <th width = 7%>Request</th>
+            <th width = 25%>Url</th>
+            <th width = 14%>Meegeven</th>
+            <th width = 14%>Terug</th>
+            <th width = 10%>Omschrijving</th>
+            <th width = 10%>Status</th>
+            <th width = 14%></th>
+		
 		<div id ="divCdOptions">
 			<h2>Optional</h2>
 			<h3>Add artist to CD</h3>

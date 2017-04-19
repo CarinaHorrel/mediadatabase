@@ -1,8 +1,8 @@
 <html>
 	<head>
 		<title>Database DVDs</title>
-		<script src="../javascript/dvd.js"></script>
-		<link rel="stylesheet" type="text/css" href="../css/dvd.css" />
+		<script src="./javascript/dvd.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/dvd.css" />
 		
 	</head>
 	<body>

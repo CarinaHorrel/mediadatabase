@@ -35,6 +35,9 @@ public class DVDModelBasic {
 		return this.dvd.getRemarks();
 	}
 
+	public boolean isChecked() {
+		return this.dvd.isChecked();
+	}
 	/**
 	 * To prevent going in circles, only Actor id's are returned
 	 * @return the Actor id's

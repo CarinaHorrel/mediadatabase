@@ -28,8 +28,8 @@
 			<label class="lblCdIn">year:</label>    <input type="text" id="year"/><br />
 			<label class="lblCdIn">origin:</label>  <input type="text" id="origin"/><br />
 			<label class="lblCdIn">remarks:</label> <input type="text" id="remarks"/><br />
-			<button onclick="addCD()">AddCD</button> 
-			<button onclick="putDataCD('api/cd')">updateCD</button>
+			<button onclick="addCD()">AddDVD</button> 
+			<button onclick="putDataDVD('api/cd')">updateCD</button>
 			<button onclick="deleteCD('api/cd', 'cd')">deleteCD</button>
 		</div>
 		<div id ="divCdOptions">

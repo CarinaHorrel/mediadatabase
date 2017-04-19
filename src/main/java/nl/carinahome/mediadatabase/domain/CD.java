@@ -29,8 +29,8 @@ public class CD {
 	@Column(nullable=false)
 	private int year;
 	private String origin;
-	
 	private String remarks;
+	private boolean checked;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
@@ -106,6 +106,20 @@ public class CD {
 	public List<Genre> getGenres() {
 		return genres;
 	}
+	
+	/**
+	 * @return the checked
+	 */
+	public boolean isChecked() {
+		return checked;
+	}
+	/**
+	 * @param checked the checked to set
+	 */
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+	
 	/**
 	 * @param genres the genres to set
 	 */
@@ -130,11 +144,11 @@ public class CD {
 	   Removing and adding artists by C. Horrel
        ===================================== */
 	
-	public void removeArtistFromArtsts(Artist artist) {
+	public void removeArtistFromArtists(Artist artist) {
 		this.artists.remove(artist);
 	}
 	
-	public boolean isLinkedActor(Artist linkedArtist) {
+	public boolean isLinkedArtist(Artist linkedArtist) {
 		for (Artist artist : artists) {
 			if (artist.getId() == linkedArtist.getId()) {
 				return true;
