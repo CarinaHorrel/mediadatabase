@@ -49,7 +49,7 @@ public class WriterService {
 		} else if (writer.getFirstName() == null || writer.getLastName() == null) {
 			return -2;
 		} else {
-			//System.out.println(actor);
+			//System.out.println(writer);
 			List<Writer> writers = new ArrayList<>();
 			writers = (List<Writer>) this.writerRepository.findAll();
 			System.out.println("Size=" + writers.size());

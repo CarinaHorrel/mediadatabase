@@ -9,7 +9,7 @@ window.onload=function(){
 }
 
 function refreshData() {
-    getDataCD('api/cd');
+    getDatCD('api/cd');
     getDataArtist('api/artist', "cd_artists"); 
     getDataArtist('api/artist', "artists");
     getDataGenre('api/genre',"cd_genres");

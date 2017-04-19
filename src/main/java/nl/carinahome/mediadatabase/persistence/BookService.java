@@ -73,10 +73,10 @@ public class BookService {
 	}
 	
 	/**
-	 * Methode om een actor aan een Book toe te voegen
+	 * Methode om een writer aan een Book toe te voegen
 	 * @param id de id van de Book
-	 * @param actor_id de id van de Actor die toegevoegd moet worden
-	 * @return true als de Actor is toegevoegd, anders false
+	 * @param actor_id de id van de Writer die toegevoegd moet worden
+	 * @return true als de Writer is toegevoegd, anders false
 	 */
 	public boolean addWriterToBook(long id, long writer_id) {
 		Book book = this.findById(id);
