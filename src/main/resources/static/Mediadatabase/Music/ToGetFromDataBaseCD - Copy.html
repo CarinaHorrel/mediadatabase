@@ -8,22 +8,21 @@
 	<body>
 		<!--RESULT SERVER: -->
 	    <hr>
-		<div id="Alert">
-			<h2>CD Select</h2>
-			<select id="CDs" onchange="selectCD(event)"></select>
-	    </div>
-	   
+	    <h1>CD</h1>
 	    <div id="divCdSelect">
-
-			<h2>Artist Select</h2>
+			<h2>CD Select</h2>
+			<!--<button onclick="getExternalData('api/cd')">getCD</button>-->
+			<button onclick="getExternalData('Abba', 'Waterloo')">getCD</button>  
+			<!--<button onclick="getExternalData('api/artist')">getArtist</button>-->
 			<!--<button onclick="getDataCD('api/cd')">getCD</button>-->
-			<select id="ArtistsFromAPI" onchange="selectArtistAPI(event)"></select>
-			
-			<h3>Show results of CD/Artist select</h3>
-			<select id="ArtistAlbumResults from API" onchange="selectArtist(event)"></select>
+			<select id="CDs" onchange="selectCD(event)"></select>
+			<h3>Genre</h3>
 			<p id="cdGenre"></p>
 			<h3>Plot</h3>
 			<p id="cdPlot"></p>
+	    </div>
+	    <div id="divPoster">
+			<img id="cdPoster" src="">
 	    </div>
 		<div id="divCdIn">
 			<h2>CD input</h2>

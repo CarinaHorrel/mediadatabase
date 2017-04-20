@@ -38,7 +38,7 @@ function addGenretoCD(){
 }
 
 function putDataCD(){
-    console.log("PUT");
+    // console.log("PUT");
     var id = document.getElementById("id").value;
     var title = document.getElementById("title").value;
     var year = document.getElementById("year").value;
@@ -55,7 +55,7 @@ function addArtist(){
 } 
 
 function putDataArtist(){
-    console.log("PUT");
+    // console.log("PUT");
     var id_artist = document.getElementById("id_artist").value;
     var artistname = document.getElementById("artistname").value;
     var artist = '{"id":'+id_artist+',"artistName":"'+artistname+'"}'; 
@@ -69,7 +69,7 @@ function addGenre(){
 }
 
 function putDataGenre(){
-    console.log("PUT");
+    // console.log("PUT");
     var id_genre = document.getElementById("id_genre").value;
     var genrename = document.getElementById("genrename").value;
     var genre = '{"id":'+id_genre+',"genreName":"'+genrename+'"}'; 
@@ -77,12 +77,12 @@ function putDataGenre(){
 }
 
 function postData(api, data, crud){
-    console.log(data);
-    console.log(crud);
+    // console.log(data);
+    // console.log(crud);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 202) {
-            console.log(this.responseText);
+            // console.log(this.responseText);
         	refreshData();
             if (api=='api/cd') {
                 document.getElementById("id").value=this.responseText;
@@ -112,12 +112,12 @@ function deleteGenre(){
 }
 
 function deleteData(api, data, crud){
-    console.log(data);
-    console.log(crud);
+    // console.log(data);
+    // console.log(crud);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 202) {
-            console.log("DELETE success");
+            // console.log("DELETE success");
             refreshData();
         }
     };
@@ -131,7 +131,7 @@ function getDataCD(api){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cdLijst = JSON.parse(this.responseText);
-            console.log(cdLijst);
+            // console.log(cdLijst);
             var selCDs = document.getElementById("CDs");
             selCDs.innerHTML = "";
             
@@ -159,7 +159,7 @@ function getDataArtist(api, varid) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var artistLijst = JSON.parse(this.responseText);
-            console.log(artistLijst);
+            // console.log(artistLijst);
             var selArtists = document.getElementById(varid);
             selArtists.innerHTML = "";
             var opt = document.createElement("option");
@@ -187,7 +187,7 @@ function getDataGenre(api, varid) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var genreLijst = JSON.parse(this.responseText);
-            console.log(genreLijst);
+            // console.log(genreLijst);
             var selGenres = document.getElementById(varid);
             for (var i=0 ; i< genreLijst.length ; i++) {
                 var opt = document.createElement("option");
@@ -203,22 +203,29 @@ function getDataGenre(api, varid) {
     xhttp.send();
 }
 
+// function selectCD(event) {
+//     var id=event.target.value;
+//     getCDByID(id);
+// }       
 
 function selectCD(event) {
     var id=event.target.value;
+    // console.log(id);
     getCDByID(id);
+    
 
-}       
+    // console.log(cdTitle);
+}      
 
 function selectArtist(event) {
     var id=event.target.value;
     artist = getArtistByID(id);
-    console.log(event.target.value);
+    // console.log(event.target.value);
     var subcda=document.getElementById("subCDsA");
     subcda.innerHTML="";
     for (var i=0 ; i< cdLijst.length ; i++) {
          for (var j=0 ; j< cdLijst[i].artists.length ; j++) {
-               console.log(cdLijst[i].artists[j].artistName);
+            //    console.log(cdLijst[i].artists[j].artistName);
                if (id==cdLijst[i].artists[j].id){
                     var opt = document.createElement("option");
                     opt.value = cdLijst[i].id;
@@ -229,15 +236,52 @@ function selectArtist(event) {
     }
 }
 
+function selectArtistAPI(event) {
+    //console.log(event.target.value);
+    //  console.log(artistArray); 
+    //var id=event.target.value;
+    //artist = getArtistByTitle(id);
+    // console.log(event.target.value);
+    
+    var ArtistApi=document.getElementById("ArtistsFromAPI");
+    ArtistApi.innerHTML="";
+    for (var i=0 ; i< artistArray.length ; i++) {
+               if (artist==artistArray[i]){
+                    var opt = document.createElement("option");
+                    opt.value = artistArray[i];
+                    opt.textContent = artistArray[i] ;
+                    subcda.appendChild(opt);
+               }
+         }       
+    }
+
+function jojo(aarray){
+    console.log("yes");
+    console.log(aarray);
+
+    var subcdg=document.getElementById("ArtistsFromAPI");
+    subcdg.innerHTML="";
+    for(q=0 ; q < aarray.length ; q++){
+                    var opt = document.createElement("option");
+                    opt.value = aarray[q];
+                    opt.textContent = aarray[q] ;
+                    subcdg.appendChild(opt);
+
+
+    }
+}
+
+
 function getArtistByID(id){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            var artist = JSON.parse(this.responseText);
-            console.log(artist);
+            // console.log(artist);
             this.artistSelected=artist;
             document.getElementById("id_artist").value=artist.id;
             document.getElementById("artistname").value=artist.artistName;
+            getExternalData(artist);
         }
     };
     xhttp.open("GET", "http://localhost:8082/api/artist/"+id);
@@ -248,12 +292,12 @@ function getArtistByID(id){
 function selectGenre(event) {
 var id=event.target.value;
     genre = getGenreByID(id);
-    console.log(event.target.value);
+    // console.log(event.target.value);
     var subcdg=document.getElementById("subCDsG");
     subcdg.innerHTML="";
     for (var i=0 ; i< cdLijst.length ; i++) {
          for (var j=0 ; j< cdLijst[i].genres.length ; j++) {
-               console.log(cdLijst[i].genres[j].genreName);
+            //    console.log(cdLijst[i].genres[j].genreName);
                if (id==cdLijst[i].genres[j].id){
                     var opt = document.createElement("option");
                     opt.value = cdLijst[i].id;
@@ -269,7 +313,7 @@ function getGenreByID(id){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            var genre = JSON.parse(this.responseText);
-            console.log(genre);
+            // console.log(genre);
             this.genreSelected=genre;
             document.getElementById("id_genre").value=genre.id;
             document.getElementById("genrename").value=genre.genreName;
@@ -285,14 +329,18 @@ function getCDByID(id){
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            var cd = JSON.parse(this.responseText);
-            console.log(cd);
+            // console.log(cd);
             this.cdSelected=cd;
             document.getElementById("id").value=cd.id;
             document.getElementById("title").value=cd.title;
             document.getElementById("year").value=cd.year;
             document.getElementById("origin").value=cd.origin;
             document.getElementById("remarks").value=cd.remarks;
-           // getExternalData(cd);
+            getExternalData(cd.title);
+            console.log(cd.title);
+            //getExternalData(artistname, cdtitle );
+            return cd;
+
         }
     };
     xhttp.open("GET", "http://localhost:8082/api/cd/"+id);
@@ -300,35 +348,69 @@ function getCDByID(id){
     xhttp.send();
 }
 
-https://freemusicarchive.org/api/get/artists.xml?api_key=KL1GPC1VXE9PTYKA
 
-function getExternalData(cd) {
-    //var url = "http://www.omdbapi.com/?t=";
-    // var url="http://ws.audioscrobbler.com/2.0/?method=ABBA.getSimilar&api_key=5e4225aa6762d769875182b25f45f325&format=json";
-// http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=After+The+Burial&api_key=5e4225aa6762d769875182b25f45f32&format=json;
+function toonHeelArray(){
+for (i=0; i<eenArray.length; j++){
+        if (!checkDuplicate(eenArray[i])){
+            tweeArray.push(eenArray[i]);
+        }
+    }
+    console.log(tweeArray)
+}
+var artistArray = [];
+function checkDuplicate(data){
+    
+    for (j=0; j<artistArray.length; j++){
+        if (artistArray[j]==data){
+            return true;
+        }
+    }
+    return false;
+}
 
-var url="http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=5e4225aa6762d769875182b25f45f325&artist=Cher&album=Believe&format=json";
+// https://freemusicarchive.org/api/get/artists.xml?api_key=KL1GPC1VXE9PTYKA
 
-    //url += cd.title;
+function getExternalData(title) {
+    
+    var url="http://ws.audioscrobbler.com/2.0/?method=album.search&album="+title+ "&api_key=5e4225aa6762d769875182b25f45f325&format=json";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var extCD = JSON.parse(this.responseText);
-          //  console.log(extCD);
+             //console.log(url);             
+             //console.log(this.responseText);
+           
            //  document.getElementById("cdPlot").textContent = extCD.album.tracks;
-              console.log(extCD.album);
+            //   console.log(extCD.album);
 
 
-              console.log(extCD.album.name);
-               console.log(extCD.album.artist);
-                 console.log(extCD.album.tracks);
-                 console.log(extCD.album.tracks.track[3].name);
+            //   console.log(extCD.album.name);
+            //    console.log(extCD.album.artist);
+                //  console.log(extCD.album.tracks);
+                // console.log(extCD.album.tracks.track[3].name);
 
-                 for  (var j=0; j<extCD.album.tracks.track.length; j++){
+                // for  (var j=0; j<extCD.album.tracks.track.length; j++){
                      //alert();
-                     document.getElementById("cdPlot").innerHTML += "<br>" +extCD.album.tracks.track[j].name;
+                  //   document.getElementById("cdPlot").innerHTML += "<br>" +extCD.album.tracks.track[j].name;
                     // alert();
+              
+                
+                    for  (var j=0; j<extCD.results.albummatches.album.length; j++){
+
+                        if (!checkDuplicate(extCD.results.albummatches.album[j].artist)){
+                            artistArray.push(extCD.results.albummatches.album[j].artist);
+                        }
+
+
+                    // console.log(artistArray);
+                     
+                     //alert();
+                     //document.getElementById("cdPlot").innerHTML += "<br>" +extCD.results.albummatches.album[j].artist;
+                     //alert();
+
                  }
+                 jojo(artistArray); 
+                 document.getElementById("cdPlot").innerHTML = artistArray;
             //document.getElementById("cdPlot").textContent = extCD.aRows[i];
             //document.getElementById("cdPoster").src = extCD.Poster;
             //document.getElementById("cdGenre").textContent = extCD.Genre;
@@ -337,4 +419,18 @@ var url="http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=5e4225aa
     xhttp.open("GET", url);
     xhttp.send();
 }
+function jojo(aarray){
+    console.log("yes");
+    console.log(aarray);
 
+    var subcdg=document.getElementById("ArtistsFromAPI");
+    subcdg.innerHTML="";
+    for(q=0 ; q < aarray.length ; q++){
+                    var opt = document.createElement("option");
+                    opt.value = aarray[q];
+                    opt.textContent = aarray[q] ;
+                    subcdg.appendChild(opt);
+
+
+    }
+}

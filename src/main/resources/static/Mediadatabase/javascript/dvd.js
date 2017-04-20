@@ -323,3 +323,31 @@ function getExternalData(dvd) {
 
 
 }
+
+    function listDVD(api) {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            dvdLijst = JSON.parse(this.responseText);
+            console.log(dvdLijst);
+
+            
+            document.getElementById("id").innerHTML=dvdLijst.id;
+            document.getElementById("title").innerHTML=dvdLijst.title;
+            document.getElementById("year").innerHTML=dvdLijst.year;
+            document.getElementById("origin").innerHTML=dvdLijst.origin;
+            document.getElementById("bonus").innerHTML=dvdLijst.bonus;
+            document.getElementById("remarks").innerHTML=dvdLijst.remarks;
+            for  (var j=0; j<dvdLijst.genres.length; j++){ 
+                     //alert();
+                     document.getElementById("genres").innerHTML=dvdLijst.genres[j];
+            }  
+            for  (var j=0; j<dvdLijst.actors.length; j++){ 
+                     //alert();
+                     document.getElementById("actors").innerHTML=dvdLijst.actors[j];
+            } 
+           
+        }
+        }; 
+    }
