@@ -1,18 +1,22 @@
 package nl.carinahome.mediadatabase.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import nl.carinahome.mediadatabase.domain.Genre;
-
 @Entity
-public class Genre {
+public class Writer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String genreName;
+	
+	@Column(nullable=false)
+	private String firstName;
+	
+	@Column(nullable=false)
+	private String lastName;
 	/**
 	 * @return the id
 	 */
@@ -26,16 +30,28 @@ public class Genre {
 		this.id = id;
 	}
 	/**
-	 * @return the genreName
+	 * @return the firstName
 	 */
-	public String getGenreName() {
-		return genreName;
+	public String getFirstName() {
+		return firstName;
 	}
 	/**
-	 * @param genreName the genreName to set
+	 * @param firstName the firstName to set
 	 */
-	public void setGenreName(String genreName) {
-		this.genreName = genreName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 	/* (non-Javadoc)
@@ -45,8 +61,9 @@ public class Genre {
 //	public int hashCode() {
 //		final int prime = 31;
 //		int result = 1;
-//		result = prime * result + ((genreName == null) ? 0 : genreName.hashCode());
+//		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 //		result = prime * result + (int) (id ^ (id >>> 32));
+//		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 //		return result;
 //	}
 	
@@ -60,31 +77,48 @@ public class Genre {
 	 * @param obj Het object dat vergeleken moet worden op gelijkheid.
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) {	
 		// standaard vergelijkingen/voorwaarden
 		if (this == obj) return true;
 		if (obj == null) return false;
 		
 		// Classes ongelijk -> nooit gelijk
 		if (this.getClass() == obj.getClass()) {
-			// Tot dus ver alles goed, dus tijd om te gaan casten naar Genre en de id's te gaan vergelijken
+			// Tot dus ver alles goed, dus tijd om te gaan casten naar Actor en de id's te gaan vergelijken
 			
-			Genre other = (Genre)obj;
-
-			if (this.genreName == null) {
-				if (other.genreName != null)
-					return false;
-			} else if (!this.genreName.equals(other.genreName))
+		Writer other = (Writer) obj;
+		
+		if (this.firstName == null) {
+			if (other.firstName != null)
 				return false;
-
-			if (this.id == other.id) {
-				return true;
-			} else {
+		} else if (!this.firstName.equals(other.firstName))
+			return false;
+		
+		if (this.lastName == null) {
+			if (other.lastName != null)
 				return false;
-			}
+		} else if (!this.lastName.equals(other.lastName))
+			return false;
+		
+		if (this.id == other.id) {
+			return true;
+		} else {
+			return false;
+		}
 			
 		} else {  // part (getClass() != obj.getClass())
 			return false;
 		}
-	}	
+	}
 }
+		
+		
+
+	
+
+	
+	
+
+	
+	
+

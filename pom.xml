@@ -68,14 +68,35 @@
 		</dependency>
 	</dependencies>
 
-	<build>
+		<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<configuration>
+					<show>private</show> <!-- public protected package or private -->
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+<reporting>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>2.10.4</version>
+			<configuration>
+				<show>package</show> <!-- public protected package or private -->
+			</configuration>
+		</plugin>
+	</plugins>
+</reporting>
 
 
 </project>

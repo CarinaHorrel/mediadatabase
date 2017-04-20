@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>Verzoeken</title>
+		<script src="../javascript/verzoek.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/verzoek.css" />
+		
+	</head>
+	<body>
+		<!--RESULT SERVER: -->
+	    <hr>
+	    <h1>Verzoek</h1>
+
+		
+			<label class="lblCdIn">Aanvrager:</label>      <input type="text" id="id"/><br />
+			<label class="lblCdIn">Request:</label>   <input type="text" id="title"/><br />
+			<label class="lblCdIn">Url:</label>    <input type="text" id="year"/><br />
+			<label class="lblCdIn">Meegeven:</label>  <input type="text" id="origin"/><br />
+			<label class="lblCdIn">Terug:</label> <input type="text" id="remarks"/><br />
+			<label class="lblCdIn">Omschrijving:</label>  <input type="text" id="origin"/><br />
+			<label class="lblCdIn">Status:</label> <input type="text" id="remarks"/><br />
+			
+			<button onclick="addCD()">AddDVD</button> 
+			<button onclick="putDataDVD('api/cd')">updateCD</button>
+			<button onclick="deleteCD('api/cd', 'cd')">deleteCD</button>
+		</div>
+		
+		
+		th width = 7%>Aanvrager</th>
+            <th width = 7%>Request</th>
+            <th width = 25%>Url</th>
+            <th width = 14%>Meegeven</th>
+            <th width = 14%>Terug</th>
+            <th width = 10%>Omschrijving</th>
+            <th width = 10%>Status</th>
+            <th width = 14%></th>
+		
+		<div id ="divCdOptions">
+			<h2>Optional</h2>
+			<h3>Add artist to CD</h3>
+			<select id="cd_artists" onchange="selectArtist(event)" >
+				<option value="artists">actors</option>                                            
+			</select>
+			<button onclick="addArtisttoCD()">AddArtisttoCD</button><br>
+			<h3>Add genre to CD</h3>
+			<select id="cd_genres" onchange="selectGenre(event)">
+				<option value="genres">genres</option>
+			</select>
+			<button onclick="addGenretoCD()">AddGenretoCD</button><br>
+		</div>
+		<hr>
+		<div id=demo2>
+			<h1>ARTIST</h1>
+			<h2>Artist Select</h2>
+			<select id="artists" onchange="selectArtist(event)" ></select>
+			<select id="subCDsA" onchange="selectCD(event)"></select>
+			<h2>Artist Info</h2>
+	  	    id_artist:<input type="text" id="id_artist"/><br />
+			artistname:<input type="text" id="artistname"/><br />
+			<button onclick="addArtist()">AddActor</button>
+            <button onclick="putDataArtist('api/artist')">updateActor</button>
+			<button onclick="deleteArtist('api/artist', 'artist')">deleteArtist</button>
+			<!--<button onclick="getDataArtist('api/artist')">getArtist</button><br>-->
+		</div>
+			
+		<hr>
+		<div id=demo3>
+			<h1>GENRE:</h1>
+	   	    id_genre:<input type="text" id="id_genre"/><br />
+			genrename:<input type="text" id="genrename"/><br />
+			<button onclick="addGenre()">AddGenre</button><br>
+			<br>
+			<!--<button onclick="getDataGenre('api/genre')">getGenre</button><br>-->
+			<select id="genres" onchange="selectGenre(event)">
+				<option value="genres">genres</option>
+			</select>
+			<select id="subCDsG" onclick="selectCD(event)">
+			</select><br>
+			<br>
+            <button onclick="putDataGenre('api/genre')">updateGenre</button><br>
+			<br>
+	        <button onclick="deleteGenre('api/genre', 'genre')">deleteGenre</button><br>
+		</div>
+		<hr>
+    </body>
+</html>

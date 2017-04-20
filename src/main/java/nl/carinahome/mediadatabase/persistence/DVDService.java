@@ -47,7 +47,7 @@ public class DVDService {
 	 * @return de nieuwe id of anders <ul>
 	 * <li>-1 als de dvd een id heeft
 	 * <li>-2 als title gelijk is aan null
-	 * <li>-3 als de title al bestaat
+	 * <li>-3 als de title en year al bestaat
 	 * </ul>
 	 */
 	public long newDVD(DVD dvd) {
@@ -120,9 +120,9 @@ public class DVDService {
 		
 	}
 	
-//	public List<DVD> jojo(String title){
-//		return dvdRepository.findByTitle(title);
-//	}
+	public List<DVD> jojo(String title){
+		return dvdRepository.findByTitle(title);
+	}
 	
 	
 }

@@ -18,9 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nl.carinahome.mediadatabase.domain.DVD;
+import nl.carinahome.mediadatabase.domain.CD;
 import nl.carinahome.mediadatabase.domain.Genre;
 import nl.carinahome.mediadatabase.domain.model.GenreModelBasic;
 import nl.carinahome.mediadatabase.persistence.DVDService;
+import nl.carinahome.mediadatabase.persistence.CDService;
 import nl.carinahome.mediadatabase.persistence.GenreService;
 
 @Path("genre")
@@ -32,6 +34,9 @@ public class GenreEndpoint {
 	/*Added by C.Horrel */
 	@Autowired
 	private DVDService dvdService;
+	
+	@Autowired
+	private CDService cdService;
 	/**
 	 * Creates a new genre
 	 * @param actor the new Genre to be added to the database
@@ -102,6 +107,16 @@ public class GenreEndpoint {
 				this.dvdService.save(dvd);
 			}
 		}
+		
+		List<CD> cds = new ArrayList<>();
+		cds = (List<CD>) cdService.findAll();
+		for (int i=0 ; i<cds.size() ; i++ ) {
+			CD cd = cds.get(i);
+			if (cd.removeOneGenre(genre)) {
+				this.cdService.save(cd);
+			}
+		}
+		
 		this.genreService.deleteById(id);
 		return Response.accepted().build();
 	}
