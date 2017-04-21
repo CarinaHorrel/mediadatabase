@@ -1,13 +1,18 @@
+// initialize variables to be used
 var cdLijst;
 var artistLijst;
 var artistSelected;
 var cdSelected
 var genreSelected;
 var genreLijst;
+var uniqueArtistArray = ['Select artist from API'];
+
+// gain access from right from the start
 window.onload=function(){
 	refreshData();
 }
 
+// gain acces to various apis
 function refreshData() {
     getDataCD('api/cd');
     getDataArtist('api/artist', "cd_artists"); 
@@ -16,6 +21,7 @@ function refreshData() {
     getDataGenre('api/genre', "genres");
 }
 
+// add a new CD to database
 function addCD(){
     var title = document.getElementById("title").value;
     var year = document.getElementById("year").value;
@@ -25,20 +31,24 @@ function addCD(){
     postData('api/cd', cd, "POST");
 }
 
+// attach artist to a existing CD in database
+// artist must exist in database, otherwise add artist to database first
 function addArtisttoCD(){
     var id = document.getElementById("id").value;
     var id_artist = document.getElementById("cd_artists").value;
     postData('api/cd/'+id+'/artist/'+id_artist, "", "PUT");
 }
 
+// attach genre to a existing CD in database
+// genre must exist in database, otherwise add artist to database first
 function addGenretoCD(){
     var id = document.getElementById("id").value;
     var id_genre = document.getElementById("cd_genres").value;
     postData('api/cd/'+id+'/genre/'+id_genre,"", "PUT");
 }
 
+// update information of existing CD in database
 function putDataCD(){
-    // console.log("PUT");
     var id = document.getElementById("id").value;
     var title = document.getElementById("title").value;
     var year = document.getElementById("year").value;
@@ -48,41 +58,44 @@ function putDataCD(){
     postData('api/cd', cd, "PUT");
 }
 
+// add a new artist to database
 function addArtist(){
     var artistname = document.getElementById("artistname").value;
     var artist = '{"artistName":"'+artistname+'"}'; 
     postData('api/artist', artist, "POST");
 } 
 
+// update information of a existing a artist in database
 function putDataArtist(){
-    // console.log("PUT");
     var id_artist = document.getElementById("id_artist").value;
     var artistname = document.getElementById("artistname").value;
     var artist = '{"id":'+id_artist+',"artistName":"'+artistname+'"}'; 
     postData('api/artist', artist, "PUT");
 }
 
+// add a new genre to database
 function addGenre(){
     var genrename = document.getElementById("genrename").value;
     var genre = '{"genreName":"'+genrename+'"}'; 
     postData('api/genre', genre, "POST");
 }
 
+// update information of a existing a genre in database
 function putDataGenre(){
-    // console.log("PUT");
     var id_genre = document.getElementById("id_genre").value;
     var genrename = document.getElementById("genrename").value;
     var genre = '{"id":'+id_genre+',"genreName":"'+genrename+'"}'; 
     postData('api/genre', genre, "PUT");
 }
 
+// gain access to local api(using local parameter=api) and add/update 
+// data(using local parameter=crud) to database, using endpoints defined 
+// in back-end.// api: 'api/cd', 'api/artist, 'api/genre'
+// crud: 'PUT' (adjusting/attaching), 'POST' (adding new data)
 function postData(api, data, crud){
-    // console.log(data);
-    // console.log(crud);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 202) {
-            // console.log(this.responseText);
         	refreshData();
             if (api=='api/cd') {
                 document.getElementById("id").value=this.responseText;
@@ -94,30 +107,40 @@ function postData(api, data, crud){
     xhttp.send(data);
 }
 
+// delete CD from database
+// attached data to artist and/or genre will also be deleted
+// genre and artist will not be deleted 
 function deleteCD(){
     var id = document.getElementById("id").value;
     var cd = '{"id":'+id+'}'; 
     deleteData('api/cd/'+id, cd, "DELETE");
 }
 
+// delete artist from database
+// attached data to CD will also be deleted
 function deleteArtist(){
     var id_artist = document.getElementById("id_artist").value;
     var artist = '{"id":'+id_artist+'}'; 
     deleteData('api/artist/'+id_artist, artist, "DELETE");
 }
+
+// delete genre from database
+// attached data to CD will also be deleted
 function deleteGenre(){
     var id_genre = document.getElementById("id_genre").value;
     var genre = '{"id":'+id_genre+'}'; 
     deleteData('api/genre/'+id_genre, genre, "DELETE");
 }
 
+// gain access to local api(using local parameter=api) and delete 
+// data(using local parameter=crud) to database, using endpoints defined 
+// in back-end.
+// api: 'api/cd', 'api/artist, 'api/genre'
+// crud: 'DELETE' (deleting)
 function deleteData(api, data, crud){
-    // console.log(data);
-    // console.log(crud);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 202) {
-            // console.log("DELETE success");
             refreshData();
         }
     };
@@ -126,25 +149,24 @@ function deleteData(api, data, crud){
     xhttp.send(data);
 }
 
-function getDataCD(api){
+// get CD data from available database
+// retrieved data is needed, to get title 
+function getDataCD(api) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cdLijst = JSON.parse(this.responseText);
-            // console.log(cdLijst);
-            var selCDs = document.getElementById("CDs");
+            var selCDs = document.getElementById("AvailableMusicInDatabase");
             selCDs.innerHTML = "";
-            
             var opt = document.createElement("option");
             opt.value = 0;
-            opt.textContent = "cds" ;
+            opt.textContent = "Available Music In Database" ;
             selCDs.appendChild(opt);
             for (var i=0 ; i< cdLijst.length ; i++) {
                 opt = document.createElement("option");
                 opt.value = cdLijst[i].id;
                 opt.textContent = cdLijst[i].title ;
                 selCDs.appendChild(opt);
-                // document.getElementById("demo").innerHTML += cdLijst[i].title + " " + cdLijst[i].year + "<br>";
             }
         }
     };
@@ -153,13 +175,13 @@ function getDataCD(api){
     xhttp.send();
 }
 
-
+// get artist data from available database
+// retrieved data is needed, to get artistName
 function getDataArtist(api, varid) { 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var artistLijst = JSON.parse(this.responseText);
-            // console.log(artistLijst);
             var selArtists = document.getElementById(varid);
             selArtists.innerHTML = "";
             var opt = document.createElement("option");
@@ -171,7 +193,6 @@ function getDataArtist(api, varid) {
                 opt.value = artistLijst[i].id;
                 opt.textContent = artistLijst[i].artistName ;
                 selArtists.appendChild(opt);
-                //document.getElementById("demo").innerHTML += artistLijst[i].artistName + " " + artistLijst[i].lastName + "<br>";
             }
             var subcda=document.getElementById("subCDsA");
             subcda.innerHTML="";
@@ -182,51 +203,49 @@ function getDataArtist(api, varid) {
     xhttp.send();
 }
 
+// get genre data from available database
+// retrieved data is needed, to get genreName
 function getDataGenre(api, varid) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var genreLijst = JSON.parse(this.responseText);
-            // console.log(genreLijst);
             var selGenres = document.getElementById(varid);
+            selGenres.innerHTML = "";
+            var opt = document.createElement("option");
+            opt.value = 0;
+            opt.textContent = "genres" ;
+            selGenres.appendChild(opt);
             for (var i=0 ; i< genreLijst.length ; i++) {
                 var opt = document.createElement("option");
                 opt.value = genreLijst[i].id;
                 opt.textContent = genreLijst[i].genreName ;
                 selGenres.appendChild(opt);
-                //document.getElementById("demo").innerHTML += genreLijst[i].genreName"<br>";
             }
+            var subcdg=document.getElementById("subCDsG");
+            subcdg.innerHTML="";
         }
     };
     xhttp.open("GET", "http://localhost:8082/"+api);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
-}
+}    
 
-// function selectCD(event) {
-//     var id=event.target.value;
-//     getCDByID(id);
-// }       
-
+// make selection on dropdown list of available CDs
 function selectCD(event) {
     var id=event.target.value;
-    // console.log(id);
     getCDByID(id);
-    
-
-    // console.log(cdTitle);
 }      
 
+// make selection on dropdown list of available artists
 function selectArtist(event) {
     var id=event.target.value;
-    artist = getArtistByID(id);
-    // console.log(event.target.value);
+   // var artist = getArtistByID(id);
     var subcda=document.getElementById("subCDsA");
     subcda.innerHTML="";
     for (var i=0 ; i< cdLijst.length ; i++) {
          for (var j=0 ; j< cdLijst[i].artists.length ; j++) {
-            //    console.log(cdLijst[i].artists[j].artistName);
-               if (id==cdLijst[i].artists[j].id){
+               if (id==cdLijst[i].artists[j].id) {
                     var opt = document.createElement("option");
                     opt.value = cdLijst[i].id;
                     opt.textContent = cdLijst[i].title ;
@@ -236,48 +255,14 @@ function selectArtist(event) {
     }
 }
 
-function selectArtistAPI(event) {
-    //console.log(event.target.value);
-    //  console.log(artistArray); 
-    //var id=event.target.value;
-    //artist = getArtistByTitle(id);
-    // console.log(event.target.value);
-    
-    var ArtistApi=document.getElementById("ArtistsFromAPI");
-    ArtistApi.innerHTML="";
-    for (var i=0 ; i< artistArray.length ; i++) {
-               if (artist==artistArray[i]){
-                    var opt = document.createElement("option");
-                    opt.value = artistArray[i];
-                    opt.textContent = artistArray[i] ;
-                    subcda.appendChild(opt);
-               }
-         }       
-    }
-
-function jojo(aarray){
-    console.log("yes");
-    console.log(aarray);
-
-    var subcdg=document.getElementById("ArtistsFromAPI");
-    subcdg.innerHTML="";
-    for(q=0 ; q < aarray.length ; q++){
-                    var opt = document.createElement("option");
-                    opt.value = aarray[q];
-                    opt.textContent = aarray[q] ;
-                    subcdg.appendChild(opt);
 
 
-    }
-}
-
-
-function getArtistByID(id){
+// get data artist by id from endpoint 
+function getArtistByID(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            var artist = JSON.parse(this.responseText);
-            // console.log(artist);
             this.artistSelected=artist;
             document.getElementById("id_artist").value=artist.id;
             document.getElementById("artistname").value=artist.artistName;
@@ -289,16 +274,15 @@ function getArtistByID(id){
     xhttp.send();
 }
 
+// make selection on dropdown list of available genres
 function selectGenre(event) {
-var id=event.target.value;
-    genre = getGenreByID(id);
-    // console.log(event.target.value);
+    var id=event.target.value;
+    var genre = getGenreByID(id);
     var subcdg=document.getElementById("subCDsG");
     subcdg.innerHTML="";
     for (var i=0 ; i< cdLijst.length ; i++) {
          for (var j=0 ; j< cdLijst[i].genres.length ; j++) {
-            //    console.log(cdLijst[i].genres[j].genreName);
-               if (id==cdLijst[i].genres[j].id){
+               if (id==cdLijst[i].genres[j].id) {
                     var opt = document.createElement("option");
                     opt.value = cdLijst[i].id;
                     opt.textContent = cdLijst[i].title ;
@@ -308,15 +292,15 @@ var id=event.target.value;
     }
 }
 
-function getGenreByID(id){
+// get data genre by id from endpoint
+function getGenreByID(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            var genre = JSON.parse(this.responseText);
-            // console.log(genre);
-            this.genreSelected=genre;
-            document.getElementById("id_genre").value=genre.id;
-            document.getElementById("genrename").value=genre.genreName;
+           this.genreSelected=genre;
+           document.getElementById("id_genre").value=genre.id;
+           document.getElementById("genrename").value=genre.genreName;
         }
     };
     xhttp.open("GET", "http://localhost:8082/api/genre/"+id);
@@ -324,23 +308,20 @@ function getGenreByID(id){
     xhttp.send();
 }
 
-function getCDByID(id){
+// get data CD by id from endpoint
+function getCDByID(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
            var cd = JSON.parse(this.responseText);
-            // console.log(cd);
-            this.cdSelected=cd;
-            document.getElementById("id").value=cd.id;
-            document.getElementById("title").value=cd.title;
-            document.getElementById("year").value=cd.year;
-            document.getElementById("origin").value=cd.origin;
-            document.getElementById("remarks").value=cd.remarks;
-            getExternalData(cd.title);
-            console.log(cd.title);
-            //getExternalData(artistname, cdtitle );
-            return cd;
-
+           this.cdSelected=cd;
+           document.getElementById("id").value=cd.id;
+           document.getElementById("title").value=cd.title;
+           document.getElementById("year").value=cd.year;
+           document.getElementById("origin").value=cd.origin;
+           document.getElementById("remarks").value=cd.remarks;
+           getExternalData(cd.title);
+           return cd;
         }
     };
     xhttp.open("GET", "http://localhost:8082/api/cd/"+id);
@@ -348,88 +329,63 @@ function getCDByID(id){
     xhttp.send();
 }
 
-
-function toonHeelArray(){
-for (i=0; i<eenArray.length; j++){
-        if (!checkDuplicate(eenArray[i])){
-            tweeArray.push(eenArray[i]);
+// show available results in array
+function showArray(myArray) {
+    for (i=0; i<myArray.length; j++) {
+            if (!checkDuplicate(myArray[i])) {
+                nodupArray.push(myArray[i]);
+            }
         }
-    }
-    console.log(tweeArray)
 }
-var artistArray = [];
+
+// function to check for duplicates in array
 function checkDuplicate(data){
-    
-    for (j=0; j<artistArray.length; j++){
-        if (artistArray[j]==data){
+    for (j=0; j<uniqueArtistArray.length; j++) {
+        if (uniqueArtistArray[j]==data) {
             return true;
         }
     }
     return false;
 }
 
-// https://freemusicarchive.org/api/get/artists.xml?api_key=KL1GPC1VXE9PTYKA
 
+// get data from open music source api
+// for accessing data apikey is needed
+// a search method is used on title
+// this returns all artist related to this title
+// this means that  this list also contains duplicates on artists
+// therefore a function checkDuplicate is created
+// the duplicates will be deleted
+// data available after removing duplicates is used to get addtional information fromm the open source api
 function getExternalData(title) {
-    
     var url="http://ws.audioscrobbler.com/2.0/?method=album.search&album="+title+ "&api_key=5e4225aa6762d769875182b25f45f325&format=json";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            var extCD = JSON.parse(this.responseText);
-             //console.log(url);             
-             //console.log(this.responseText);
-           
-           //  document.getElementById("cdPlot").textContent = extCD.album.tracks;
-            //   console.log(extCD.album);
-
-
-            //   console.log(extCD.album.name);
-            //    console.log(extCD.album.artist);
-                //  console.log(extCD.album.tracks);
-                // console.log(extCD.album.tracks.track[3].name);
-
-                // for  (var j=0; j<extCD.album.tracks.track.length; j++){
-                     //alert();
-                  //   document.getElementById("cdPlot").innerHTML += "<br>" +extCD.album.tracks.track[j].name;
-                    // alert();
-              
-                
-                    for  (var j=0; j<extCD.results.albummatches.album.length; j++){
-
-                        if (!checkDuplicate(extCD.results.albummatches.album[j].artist)){
-                            artistArray.push(extCD.results.albummatches.album[j].artist);
-                        }
-
-
-                    // console.log(artistArray);
-                     
-                     //alert();
-                     //document.getElementById("cdPlot").innerHTML += "<br>" +extCD.results.albummatches.album[j].artist;
-                     //alert();
-
-                 }
-                 jojo(artistArray); 
-                 document.getElementById("cdPlot").innerHTML = artistArray;
-            //document.getElementById("cdPlot").textContent = extCD.aRows[i];
-            //document.getElementById("cdPoster").src = extCD.Poster;
-            //document.getElementById("cdGenre").textContent = extCD.Genre;
+                var extCD = JSON.parse(this.responseText);
+                    for  (var j=0; j<extCD.results.albummatches.album.length; j++) {
+                            if (!checkDuplicate(extCD.results.albummatches.album[j].artist)) {
+                                uniqueArtistArray.push(extCD.results.albummatches.album[j].artist);
+                            }
+                    }  
+                ArtistAPI(uniqueArtistArray); 
+                document.getElementById("cdPlot").innerHTML = uniqueArtistArray;
         }
     };
+
     xhttp.open("GET", url);
     xhttp.send();
 }
-function jojo(aarray){
-    console.log("yes");
-    console.log(aarray);
 
-    var subcdg=document.getElementById("ArtistsFromAPI");
-    subcdg.innerHTML="";
-    for(q=0 ; q < aarray.length ; q++){
+// create a dropdown- or pulldownmenu of unique artists from open source API
+function ArtistAPI(myArray) {
+    var artistapi=document.getElementById("ArtistsFromAPI");
+    artistapi.innerHTML="";
+    for(q=0 ; q < myArray.length ; q++) {
                     var opt = document.createElement("option");
-                    opt.value = aarray[q];
-                    opt.textContent = aarray[q] ;
-                    subcdg.appendChild(opt);
+                    opt.value = myArray[q];
+                    opt.textContent = myArray[q] ;
+                    artistapi.appendChild(opt);
 
 
     }
