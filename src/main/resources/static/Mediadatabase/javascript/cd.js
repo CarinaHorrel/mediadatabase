@@ -12,6 +12,27 @@ window.onload=function(){
 	refreshData();
 }
 
+function jojo(){
+     var a = document.getElementById("AvailableMusicInDatabase").options[document.getElementById("AvailableMusicInDatabase").value].text;
+    var b = document.getElementById("ArtistsFromAPI").value;
+    var url = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=5e4225aa6762d769875182b25f45f325&artist="+b+"&album="+a+"&format=json";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var objectReturned = JSON.parse(this.responseText);
+    //        console.log(objectReturned.album.tracks.track.length);
+            var allenrs = "";
+            for(var x = 0; x < objectReturned.album.tracks.track.length ; x++ ){
+                allenrs = allenrs + "<br>" + objectReturned.album.tracks.track[x].name + " "+  objectReturned.album.tracks.track[x].duration;
+            }
+            document.getElementById("jojo2").innerHTML = allenrs;
+        }
+    };
+    xhttp.open("GET", url);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+
 // gain acces to various apis
 function refreshData() {
     getDataCD('api/cd');
@@ -378,10 +399,10 @@ function getExternalData(title) {
 }
 
 // create a dropdown- or pulldownmenu of unique artists from open source API
-function ArtistAPI(myArray) {
+function ArtistAPI(myArray){
     var artistapi=document.getElementById("ArtistsFromAPI");
     artistapi.innerHTML="";
-    for(q=0 ; q < myArray.length ; q++) {
+    for(q=0 ; q < myArray.length ; q++){
                     var opt = document.createElement("option");
                     opt.value = myArray[q];
                     opt.textContent = myArray[q] ;
