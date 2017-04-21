@@ -1,26 +1,27 @@
 <html>
 	<head>
-		<title>Database CDs</title>
-		<script src="../javascript/cd.js"></script>
-		<link rel="stylesheet" type="text/css" href="../css/cd.css" />
-		
+		<title>DATABASE Music</title>
+		<script 
+				src="../javascript/cd.js">
+		</script>
+		<link rel="stylesheet" type="text/css" href="../css/cd.css"/>
 	</head>
+
 	<body>
-		<!--RESULT SERVER: -->
+					<input type=button value=testFelix onclick=jojo()><div id="jojo2"></div>
 	    <hr>
 		<div id="Alert">
-			<h2>CD Select</h2>
-			<select id="CDs" onchange="selectCD(event)"></select>
+			<h2>Music available in existing database</h2>
+			<select id="AvailableMusicInDatabase" onchange="selectCD(event)"></select>
 	    </div>
 	   
 	    <div id="divCdSelect">
-
-			<h2>Artist Select</h2>
-			<!--<button onclick="getDataCD('api/cd')">getCD</button>-->
-			<select id="ArtistsFromAPI" onchange="selectArtistAPI(event)"></select>
+			<h2>Select artist from API</h2>
+<!--			<select id="ArtistsFromAPI" onchange="ArtistAPI(event)"></select>-->
+			<select id="ArtistsFromAPI" onchange="jojo()" ></select>
 			
 			<h3>Show results of CD/Artist select</h3>
-			<select id="ArtistAlbumResults from API" onchange="selectArtist(event)"></select>
+			<select id="ResultsArtistTitle" onchange="ArtistTitleAPI(event)"></select>
 			<p id="cdGenre"></p>
 			<h3>Plot</h3>
 			<p id="cdPlot"></p>
@@ -51,37 +52,38 @@
 		</div>
 		<hr>
 		<div id=demo2>
-			<h1>ARTIST</h1>
-			<h2>Artist Select</h2>
-			<select id="artists" onchange="selectArtist(event)" ></select>
-			<select id="subCDsA" onchange="selectCD(event)"></select>
-			<h2>Artist Info</h2>
-	  	    id_artist:<input type="text" id="id_artist"/><br />
-			artistname:<input type="text" id="artistname"/><br />
-			<button onclick="addArtist()">AddArtist</button>
-            <button onclick="putDataArtist('api/artist')">updateArtist</button>
-			<button onclick="deleteArtist('api/artist', 'artist')">deleteArtist</button>
-			<!--<button onclick="getDataArtist('api/artist')">getArtist</button><br>-->
+			<h1>ARTIST:</h1>
+
+				<h2>Artist Select</h2>
+					<select id="artists" onchange="selectArtist(event)" ></select>
+					<select id="subCDsA" onchange="selectCD(event)"></select>
+
+				<h2>Artist Info</h2>
+					id_artist:<input type="text" id="id_artist"/><br />
+					artistname:<input type="text" id="artistname"/><br />
+					<button onclick="addArtist()">AddArtist</button>
+					<button onclick="putDataArtist('api/artist')">updateArtist</button>
+					<button onclick="deleteArtist('api/artist', 'artist')">deleteArtist</button>
 		</div>
 			
 		<hr>
+
 		<div id=demo3>
 			<h1>GENRE:</h1>
-	   	    id_genre:<input type="text" id="id_genre"/><br />
-			genrename:<input type="text" id="genrename"/><br />
-			<button onclick="addGenre()">AddGenre</button><br>
-			<br>
-			<!--<button onclick="getDataGenre('api/genre')">getGenre</button><br>-->
-			<select id="genres" onchange="selectGenre(event)">
-				<option value="genres">genres</option>
-			</select>
-			<select id="subCDsG" onclick="selectCD(event)">
-			</select><br>
-			<br>
-            <button onclick="putDataGenre('api/genre')">updateGenre</button><br>
-			<br>
-	        <button onclick="deleteGenre('api/genre', 'genre')">deleteGenre</button><br>
+
+				<h2>Genre Select</h2>
+					<select id="genres" onchange="selectGenre(event)"></select>
+			   		<select id="subCDsG" onclick="selectCD(event)"></select>
+
+				<h2>Genre Info</h2>
+					id_genre:<input type="text" id="id_genre"/><br />
+					genrename:<input type="text" id="genrename"/><br />
+					<button onclick="addGenre()">AddGenre</button>
+					<button onclick="putDataGenre('api/genre')">updateGenre</button>
+					<button onclick="deleteGenre('api/genre', 'genre')">deleteGenre</button>
 		</div>
+
 		<hr>
+
     </body>
 </html>
