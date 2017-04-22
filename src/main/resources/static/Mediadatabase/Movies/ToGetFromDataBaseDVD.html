@@ -51,37 +51,38 @@
 		<hr>
 		<div id=demo2>
 			<h1>ACTOR</h1>
-			<h2>Actor Select</h2>
-			<select id="actors" onchange="selectActor(event)" ></select>
-			<select id="subDVDsA" onchange="selectDVD(event)"></select>
-			<h2>Actor Info</h2>
-	  	    id_actor:<input type="text" id="id_actor"/><br />
-			firstname:<input type="text" id="firstname"/><br />
-			lastname:<input type="text" id="lastname"/><br />
-			<button onclick="addActor()">AddActor</button>
-            <button onclick="putDataActor('api/actor')">updateActor</button>
-			<button onclick="deleteActor('api/actor', 'actor')">deleteActor</button>
-			<!--<button onclick="getDataActor('api/actor')">getActor</button><br>-->
+
+				<h2>Actor Select</h2>
+					<select id="actors" onchange="selectActor(event)" ></select>
+					<select id="subDVDsA" onchange="selectDVD(event)"></select>
+
+				<h2>Actor Info</h2>
+					id_actor:<input type="text" id="id_actor"/><br />
+					firstname:<input type="text" id="firstname"/><br />
+					lastname:<input type="text" id="lastname"/><br />
+					<button onclick="addActor()">AddActor</button>
+					<button onclick="putDataActor('api/actor')">updateActor</button>
+					<button onclick="deleteActor('api/actor', 'actor')">deleteActor</button>
 		</div>
 			
 		<hr>
+
 		<div id=demo3>
 			<h1>GENRE:</h1>
-	   	    id_genre:<input type="text" id="id_genre"/><br />
-			genrename:<input type="text" id="genrename"/><br />
-			<button onclick="addGenre()">AddGenre</button><br>
-			<br>
-			<!--<button onclick="getDataGenre('api/genre')">getGenre</button><br>-->
-			<select id="genres" onchange="selectGenre(event)">
-				<option value="genres">genres</option>
-			</select>
-			<select id="subDVDsG" onclick="selectDVD(event)">
-			</select><br>
-			<br>
-            <button onclick="putDataGenre('api/genre')">updateGenre</button><br>
-			<br>
-	        <button onclick="deleteGenre('api/genre', 'genre')">deleteGenre</button><br>
+
+				<h2>Genre Select</h2>
+					<select id="genres" onchange="selectGenre(event)">
+					<select id="subDVDsG" onclick="selectDVD(event)">
+
+				<h2>Genre Info</h2>		
+				id_genre:<input type="text" id="id_genre"/><br />
+				genrename:<input type="text" id="genrename"/><br />
+				<button onclick="addGenre()">AddGenre</button>
+				<button onclick="putDataGenre('api/genre')">updateGenre</button>
+				<button onclick="deleteGenre('api/genre', 'genre')">deleteGenre</button>
 		</div>
+
 		<hr>
+
     </body>
 </html>
