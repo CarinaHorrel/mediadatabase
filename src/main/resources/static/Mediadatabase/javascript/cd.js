@@ -12,8 +12,9 @@ window.onload=function(){
 	refreshData();
 }
 
-function jojo(){
-     var a = document.getElementById("AvailableMusicInDatabase").options[document.getElementById("AvailableMusicInDatabase").value].text;
+function showResults(){
+
+    var a = document.getElementById("AvailableMusicInDatabase").options[document.getElementById("AvailableMusicInDatabase").value].text;
     var b = document.getElementById("ArtistsFromAPI").value;
     var url = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=5e4225aa6762d769875182b25f45f325&artist="+b+"&album="+a+"&format=json";
     var xhttp = new XMLHttpRequest();
@@ -28,10 +29,14 @@ function jojo(){
             document.getElementById("jojo2").innerHTML = allenrs;
         }
     };
+
     xhttp.open("GET", url);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
+   
 }
+
+
 
 // gain acces to various apis
 function refreshData() {
@@ -162,6 +167,7 @@ function deleteData(api, data, crud){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 202) {
+            console.log("DELETE success");
             refreshData();
         }
     };
@@ -256,6 +262,7 @@ function getDataGenre(api, varid) {
 function selectCD(event) {
     var id=event.target.value;
     getCDByID(id);
+
 }      
 
 // make selection on dropdown list of available artists
@@ -275,8 +282,6 @@ function selectArtist(event) {
          }       
     }
 }
-
-
 
 // get data artist by id from endpoint 
 function getArtistByID(id) {
@@ -369,7 +374,6 @@ function checkDuplicate(data){
     return false;
 }
 
-
 // get data from open music source api
 // for accessing data apikey is needed
 // a search method is used on title
@@ -377,7 +381,7 @@ function checkDuplicate(data){
 // this means that  this list also contains duplicates on artists
 // therefore a function checkDuplicate is created
 // the duplicates will be deleted
-// data available after removing duplicates is used to get addtional information fromm the open source api
+// data available after removing duplicates is used to get additional information from the open source api
 function getExternalData(title) {
     var url="http://ws.audioscrobbler.com/2.0/?method=album.search&album="+title+ "&api_key=5e4225aa6762d769875182b25f45f325&format=json";
     var xhttp = new XMLHttpRequest();
@@ -391,6 +395,7 @@ function getExternalData(title) {
                     }  
                 ArtistAPI(uniqueArtistArray); 
                 document.getElementById("ResultsArtistTitle").innerHTML = uniqueArtistArray;
+                console.log();
         }
     };
 
@@ -411,3 +416,4 @@ function ArtistAPI(myArray){
 
     }
 }
+
