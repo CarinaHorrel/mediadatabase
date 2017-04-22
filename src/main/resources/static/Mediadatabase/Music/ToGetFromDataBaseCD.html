@@ -8,7 +8,7 @@
 	</head>
 
 	<body>
-					<input type=button value=testFelix onclick=jojo()><div id="jojo2"></div>
+					
 	    <hr>
 		<div id="Alert">
 			<h2>Music available in existing database</h2>
@@ -21,9 +21,10 @@
 			<select id="ArtistsFromAPI" onchange="jojo()" ></select>
 			
 			<h3>Show results of CD/Artist select</h3>
-			<select id="ResultsArtistTitle" onchange="ArtistTitleAPI(event)"></select>
-			<p id="cdGenre"></p>
-			<h3>Plot</h3>
+<input type=button value=showResults onclick=jojo()>
+			<!--<select id="ResultsArtistTitle" onchange="ArtistTitleAPI(event)"></select>-->
+			<p id="jojo2"></p>
+		
 			<p id="cdPlot"></p>
 	    </div>
 		<div id="divCdIn">

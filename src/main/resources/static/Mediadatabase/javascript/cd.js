@@ -390,7 +390,7 @@ function getExternalData(title) {
                             }
                     }  
                 ArtistAPI(uniqueArtistArray); 
-                document.getElementById("cdPlot").innerHTML = uniqueArtistArray;
+                document.getElementById("ResultsArtistTitle").innerHTML = uniqueArtistArray;
         }
     };
 
