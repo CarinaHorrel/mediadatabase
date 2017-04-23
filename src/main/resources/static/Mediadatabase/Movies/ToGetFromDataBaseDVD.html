@@ -1,23 +1,26 @@
 <html>
 	<head>
-		<title>Database DVDs</title>
+		<title>DATABASE DVDs</title>
 		<script src="../javascript/dvd.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/dvd.css" />
-		
 	</head>
+
 	<body>
-		<!--RESULT SERVER: -->
+
 	    <hr>
 	    <h1>DVD</h1>
 	    <div id="divDvdSelect">
 			<h2>DVD Select</h2>
 			<!--<button onclick="getDataDVD('api/dvd')">getDVD</button>-->
 			<select id="DVDs" onchange="selectDVD(event)"></select>
+
 			<h3>Genre</h3>
 			<p id="dvdGenre"></p>
 			<h3>Plot</h3>
 			<p id="dvdPlot"></p>
+
 	    </div>
+
 	    <div id="divPoster">
 			<img id="dvdPoster" src="">
 	    </div>
@@ -71,8 +74,8 @@
 			<h1>GENRE:</h1>
 
 				<h2>Genre Select</h2>
-					<select id="genres" onchange="selectGenre(event)">
-					<select id="subDVDsG" onclick="selectDVD(event)">
+					<select id="genres" onchange="selectGenre(event)"></select>
+					<select id="subDVDsG" onchange="selectDVD(event)"></select>
 
 				<h2>Genre Info</h2>		
 				id_genre:<input type="text" id="id_genre"/><br />

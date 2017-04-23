@@ -328,7 +328,7 @@ function getDVDByID(id){
             document.getElementById("bonus").value=dvd.bonus;
             document.getElementById("remarks").value=dvd.remarks;
             getExternalData(dvd);
-            // return dvd;
+            return dvd;
         }
     };
     xhttp.open("GET", "http://localhost:8082/api/dvd/"+id);
