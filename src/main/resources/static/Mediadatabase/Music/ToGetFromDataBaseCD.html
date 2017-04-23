@@ -8,7 +8,7 @@
 	</head>
 
 	<body>
-					<input type=button value=testFelix onclick=showResults()><div id="jojo2"></div>
+					<!--<input type=button value=showResults onclick="showResults(event)">-->
 	    <hr>
 		<div id="Alert">
 			<h2>Music available in existing database</h2>
@@ -18,13 +18,15 @@
 	    <div id="divCdSelect">
 			<h2>Select artist from API</h2>
 <!--			<select id="ArtistsFromAPI" onchange="ArtistAPI(event)"></select>-->
-			<select id="ArtistsFromAPI" onchange="showResults()" ></select>
+			<select id="ArtistsFromAPI" onchange="showResults()" >
 			
 			<h3>Show results of CD/Artist select</h3>
+			<input type=button value=showResults onchange="showResults()">
+                 <div id="jojo2"></div>
+			</select>
+
 			<select id="ResultsArtistTitle" onchange="ArtistTitleAPI(event)"></select>
-			<p id="cdGenre"></p>
-			<h3>Plot</h3>
-			<p id="cdPlot"></p>
+			
 	    </div>
 		<div id="divCdIn">
 			<h2>CD input</h2>
@@ -73,7 +75,7 @@
 
 				<h2>Genre Select</h2>
 					<select id="genres" onchange="selectGenre(event)"></select>
-			   		<select id="subCDsG" onclick="selectCD(event)"></select>
+			   		<select id="subCDsG" onchange="selectCD(event)"></select>
 
 				<h2>Genre Info</h2>
 					id_genre:<input type="text" id="id_genre"/><br />
