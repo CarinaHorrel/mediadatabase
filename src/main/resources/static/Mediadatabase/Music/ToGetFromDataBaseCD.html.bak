@@ -21,11 +21,11 @@
 			<select id="ArtistsFromAPI" onchange="showResults()" >
 			
 			<h3>Show results of CD/Artist select</h3>
-		<input type=button value=showResults onchange="showResults()"><br>
+			<input type=button value=showResults onchange="showResults()">
                  <div id="jojo2"></div>
 			</select>
 
-	
+			<select id="ResultsArtistTitle" onchange="ArtistTitleAPI(event)"></select>
 			
 	    </div>
 		<div id="divCdIn">
