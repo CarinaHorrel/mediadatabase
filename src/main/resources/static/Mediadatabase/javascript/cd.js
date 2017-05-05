@@ -393,7 +393,7 @@ function getExternalData(title) {
                             }
                     }  
                 ArtistAPI(uniqueArtistArray); 
-                document.getElementById("ResultsArtistTitle").innerHTML = uniqueArtistArray;
+                // document.getElementById("ResultsArtistTitle").innerHTML = uniqueArtistArray;
                 console.log();
         }
     };

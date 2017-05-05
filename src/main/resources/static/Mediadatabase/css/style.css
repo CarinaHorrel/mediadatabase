@@ -1,0 +1,36 @@
+body{
+   
+    background: url("../Images/6986248-beautiful-nature.jpg") no-repeat;
+    background-size: cover;
+    font-weight: bold;
+    font-family:  'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;   
+}
+
+           
+            nav ul {padding:0; margin:0; transition: all 0.4s ease-in-out; }
+            nav ul li {list-style: none;}
+            nav ul li a {display: inline-block; width: 200px; color: gold; padding: 10px 20px; text-decoration: none; background: #2f3036}
+            nav ul li:hover > a{  background: green;}
+            nav ul ul li {position: relative;}
+            nav ul ul ul {position: absolute; top: 0; left: 100%;}
+            nav > ul ul {position: absolute; visibility: hidden; opacity: 0; }
+            nav ul li:hover > ul {visibility: visible; opacity: 1; }  /*background: #f3f3f3; color: #2f3036;*/
+            nav li:hover ul li a:hover {
+                background: #19c589;
+                color: #fff;
+            }
+            nav > ul > li {float:left;}
+            .clearfix:after{
+                display: block;
+                content: " ";
+                clear:both;
+            }
+
+
+
+
+
+
+
+/* Hover state for dropdown links */
+ /* */

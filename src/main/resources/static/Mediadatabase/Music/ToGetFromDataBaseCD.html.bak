@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Database Music</title>
+		<title>DATABASE Music</title>
 		<script 
 				src="../javascript/cd.js">
 		</script>
@@ -10,7 +10,6 @@
 	<body>
 					<!--<input type=button value=showResults onclick="showResults(event)">-->
 	    <hr>
-	  <h1 id="top">Database Music</h1>
 		<div id="Alert">
 			<h2>Music available in existing database</h2>
 			<select id="AvailableMusicInDatabase" onchange="selectCD(event)"></select>
@@ -52,7 +51,6 @@
 				<option value="genres">genres</option>
 			</select>
 			<button onclick="addGenretoCD()">AddGenretoCD</button><br>
-			<p><a href="#top">Top</a></p></br>
 		</div>
 		<hr>
 		<div id=demo2>
@@ -68,7 +66,6 @@
 					<button onclick="addArtist()">AddArtist</button>
 					<button onclick="putDataArtist('api/artist')">updateArtist</button>
 					<button onclick="deleteArtist('api/artist', 'artist')">deleteArtist</button>
-					<p><a href="#top">Top</a></p></br>
 		</div>
 			
 		<hr>
@@ -86,7 +83,6 @@
 					<button onclick="addGenre()">AddGenre</button>
 					<button onclick="putDataGenre('api/genre')">updateGenre</button>
 					<button onclick="deleteGenre('api/genre', 'genre')">deleteGenre</button>
-					<p><a href="#top">Top</a></p></br>
 		</div>
 
 		<hr>
