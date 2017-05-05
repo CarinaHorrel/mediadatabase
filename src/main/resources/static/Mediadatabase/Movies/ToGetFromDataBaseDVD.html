@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>DATABASE DVDs</title>
+		<title>Database Movies</title>
 		<script src="../javascript/dvd.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/dvd.css" />
 	</head>
@@ -8,7 +8,7 @@
 	<body>
 
 	    <hr>
-	    <h1>DVD</h1>
+	    <h1 id="top">Database Movies</h1>
 	    <div id="divDvdSelect">
 			<h2>DVD Select</h2>
 			<!--<button onclick="getDataDVD('api/dvd')">getDVD</button>-->
@@ -49,7 +49,7 @@
 			</select>
 			<button onclick="addGenretoDVD()">AddGenretoDVD</button><br>
 			<button onclick="listDVD()">Listing DVDs</button><br>
-			
+			<p><a href="#top">Top</a></p></br>
 		</div>
 		<hr>
 		<div id=demo2>
@@ -66,6 +66,7 @@
 					<button onclick="addActor()">AddActor</button>
 					<button onclick="putDataActor('api/actor')">updateActor</button>
 					<button onclick="deleteActor('api/actor', 'actor')">deleteActor</button>
+					<p><a href="#top">Top</a></p></br>
 		</div>
 			
 		<hr>
@@ -83,6 +84,7 @@
 				<button onclick="addGenre()">AddGenre</button>
 				<button onclick="putDataGenre('api/genre')">updateGenre</button>
 				<button onclick="deleteGenre('api/genre', 'genre')">deleteGenre</button>
+				<p><a href="#top">Top</a></p></br>
 		</div>
 
 		<hr>
