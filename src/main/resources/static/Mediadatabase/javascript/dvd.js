@@ -2,7 +2,7 @@
 var dvdLijst;
 var actorLijst;
 var actorSelected;
-var dvdSelected
+var dvdSelected;
 var genreSelected;
 var genreLijst;
 

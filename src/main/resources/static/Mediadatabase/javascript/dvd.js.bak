@@ -93,7 +93,7 @@ function putDataGenre(){
 
 // gain access to local api(using local parameter=api) and add/update 
 // data(using local parameter=crud) to database, using endpoints defined 
-// in back-end.// api: 'api/cd', 'api/actor, 'api/genre'
+// in back-end.// api: 'api/dvd', 'api/actor, 'api/genre'
 // crud: 'PUT' (adjusting/attaching), 'POST' (adding new data)
 function postData(api, data, crud){
     var xhttp = new XMLHttpRequest();
@@ -138,7 +138,7 @@ function deleteGenre(){
 // gain access to local api(using local parameter=api) and delete 
 // data(using local parameter=crud) to database, using endpoints defined 
 // in back-end.
-// api: 'api/cd', 'api/artist, 'api/genre'
+// api: 'api/dvd', 'api/actor, 'api/genre'
 // crud: 'DELETE' (deleting)
 function deleteData(api, data, crud){
     var xhttp = new XMLHttpRequest();
@@ -226,8 +226,8 @@ function getDataGenre(api, varid) {
                 opt.textContent = genreLijst[i].genreName ;
                 selGenres.appendChild(opt);
             }
-            var subcdg=document.getElementById("subCDsG");
-            subcdg.innerHTML="";
+            var subdvdg=document.getElementById("subDVDsG");
+            subdvdg.innerHTML="";
         }
     };
     xhttp.open("GET", "http://localhost:8082/"+api);
