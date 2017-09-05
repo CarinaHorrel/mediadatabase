@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2017 at 06:39 PM
+-- Generation Time: Aug 15, 2017 at 03:34 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -1341,7 +1341,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (497, b'1', b'0', 'DVDR', ' ', 'Garden State', 2004),
 (498, b'1', b'0', ' ', ' ', 'Cold Mountain', 2002),
 (499, b'1', b'0', 'DVDR', ' ', 'Star Wars: Episode II - Attack of the Clones', 2002),
-(500, b'1', b'0', 'DVDR', ' ', 'Anywhere But Here', 1999),
+(500, b'0', b'0', 'DVDR', ' ', 'Anywhere But Here', 1999),
 (501, b'1', b'0', 'DVDR', ' ', 'Star Wars: Episode I - The Phantom Menace', 1999),
 (502, b'1', b'0', ' ', ' ', 'Mars Attacks!', 1996),
 (503, b'1', b'0', 'DVDR', ' ', 'Everyone Says I Love You', 1996),
@@ -3446,7 +3446,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (8332, b'0', b'0', '', '', 'In the Line of Duty Manhunt in the Dakotas', 1991),
 (8333, b'0', b'0', '', '', 'Psycho IV The Beginning', 1990),
 (8334, b'0', b'0', '', '', 'Psycho III', 1986),
-(8335, b'0', b'0', '', '', 'The Night They Saved Christmas', 1984),
+(8335, b'0', b'0', 'DVDR', '', 'The Night They Saved Christmas', 1984),
 (8336, b'0', b'0', '', '', 'Psycho II', 1983),
 (8337, b'0', b'0', '', '', 'Lenny', 1974),
 (8338, b'0', b'0', '', '', 'Perfect Obedience', 2014),
@@ -3746,7 +3746,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (9946, b'0', b'0', '', '', 'Serendipity', 2001),
 (9947, b'0', b'0', '', '', 'Half Nelson', 2006),
 (9948, b'0', b'0', '', '', 'Tropic Thunder', 2008),
-(9949, b'0', b'0', '', '', 'Jesse Stone: Lost in Paradise', 2015),
+(9949, b'0', b'0', 'DVDR', '', 'Jesse Stone: Lost in Paradise', 2015),
 (9950, b'0', b'0', '', '', '90 Minutes in Heaven', 2015),
 (9951, b'0', b'0', '', '', 'Jeremiah Johnson', 1972),
 (9952, b'0', b'0', '', '', 'Smokey and the Bandit', 1977),
@@ -4033,7 +4033,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (11507, b'0', b'0', '', '', 'Deep Impact', 1998),
 (11508, b'0', b'0', '', '', 'De Tweeling', 2002),
 (11509, b'0', b'0', '', 'TV Mini-Series', 'Rose red', 2002),
-(11510, b'0', b'0', '', '', 'The Accountant', 2016),
+(11510, b'0', b'0', 'DVDR', '', 'The Accountant', 2016),
 (11511, b'0', b'0', '', '', 'Pirates of the Caribbean: On Stranger Tides', 2011),
 (11512, b'0', b'0', '', 'TV Mini-Series', 'Kane & Abel', 1985),
 (11513, b'0', b'0', '', '', 'Morgan', 2016),
@@ -4061,8 +4061,10 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (11535, b'0', b'0', '', '', 'La marraine', 2014),
 (11536, b'1', b'0', 'DVD', 'Regio 1, english subtitles', 'Les loups', 2014),
 (11537, b'0', b'0', '', '', 'Consumed', 2014),
-(11538, b'0', b'0', 'DVDR', NULL, 'Eyes of an Angel', 1991),
-(11539, b'0', b'0', 'DVDR', '', 'Varsity Blues', 1999);
+(11538, b'0', b'0', 'DVDR', '', 'Eyes of an Angel', 1991),
+(11539, b'0', b'0', 'DVDR', '', 'Varsity Blues', 1999),
+(11540, b'0', b'0', 'DVDR', '', 'A Monster Calls', 2016),
+(11541, b'0', b'0', 'DVDR', '', 'In a Valley of Violence', 2016);
 
 -- --------------------------------------------------------
 
@@ -5022,7 +5024,9 @@ INSERT INTO `dvd_actors` (`dvd_id`, `actors_id`) VALUES
 (8426, 7),
 (93, 23),
 (11538, 26),
-(11539, 28);
+(11539, 28),
+(11540, 30),
+(11541, 26);
 
 -- --------------------------------------------------------
 
@@ -6898,7 +6902,22 @@ INSERT INTO `dvd_genres` (`dvd_id`, `genres_id`) VALUES
 (9928, 6),
 (10746, 6),
 (10746, 10),
-(10746, 14);
+(10746, 14),
+(6384, 4),
+(6384, 6),
+(9949, 5),
+(9949, 6),
+(11540, 6),
+(11540, 8),
+(11541, 1),
+(11541, 5),
+(11541, 6),
+(8335, 6),
+(8335, 7),
+(8335, 8),
+(11510, 1),
+(11510, 5),
+(11510, 6);
 
 -- --------------------------------------------------------
 
@@ -7128,7 +7147,7 @@ ALTER TABLE `cd`
 -- AUTO_INCREMENT for table `dvd`
 --
 ALTER TABLE `dvd`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11540;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11542;
 --
 -- AUTO_INCREMENT for table `file_import`
 --

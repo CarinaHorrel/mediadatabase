@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2017 at 06:39 PM
+-- Generation Time: Aug 19, 2017 at 05:19 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -990,7 +990,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (144, b'1', b'0', 'DVDR', ' ', 'Waterworld', 1995),
 (145, b'1', b'0', 'DVDR', ' ', 'The War', 1994),
 (146, b'1', b'0', 'DVDR', ' ', 'Wyatt Earp', 1994),
-(147, b'1', b'0', 'DVDR', ' ', 'A Perfect World', 1993),
+(147, b'0', b'0', 'DVDR', ' ', 'A Perfect World', 1993),
 (148, b'1', b'0', 'DVDR', ' ', 'The Bodyguard', 1992),
 (149, b'1', b'0', 'DVDR', ' ', 'JFK', 1991),
 (150, b'1', b'0', 'DVDR', '', 'Robin Hood: Prince of Thieves', 1991),
@@ -1258,7 +1258,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (414, b'1', b'0', 'DVD', ' ', 'Insomnia', 2002),
 (415, b'1', b'0', 'DVD', ' ', 'People I Know', 2002),
 (416, b'1', b'0', 'DVDR', ' ', 'Any Given Sunday', 1999),
-(417, b'1', b'0', 'DVD', ' ', 'The Insider', 1999),
+(417, b'0', b'0', 'DVD', ' ', 'The Insider', 1999),
 (418, b'1', b'0', 'DVD', ' ', 'The Devil\'s Advocate', 1997),
 (419, b'1', b'0', 'DVD', ' ', 'Donnie Brasco', 1997),
 (420, b'1', b'0', 'DVDR', ' ', 'City Hall', 1996),
@@ -1341,7 +1341,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (497, b'1', b'0', 'DVDR', ' ', 'Garden State', 2004),
 (498, b'1', b'0', ' ', ' ', 'Cold Mountain', 2002),
 (499, b'1', b'0', 'DVDR', ' ', 'Star Wars: Episode II - Attack of the Clones', 2002),
-(500, b'1', b'0', 'DVDR', ' ', 'Anywhere But Here', 1999),
+(500, b'0', b'0', 'DVDR', ' ', 'Anywhere But Here', 1999),
 (501, b'1', b'0', 'DVDR', ' ', 'Star Wars: Episode I - The Phantom Menace', 1999),
 (502, b'1', b'0', ' ', ' ', 'Mars Attacks!', 1996),
 (503, b'1', b'0', 'DVDR', ' ', 'Everyone Says I Love You', 1996),
@@ -1392,7 +1392,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (548, b'1', b'0', 'DVDR', ' ', 'Red 2', 2013),
 (549, b'1', b'0', 'DVDR', ' ', 'A Good Day to Die Hard', 2013),
 (550, b'1', b'0', 'DVDR', ' ', 'Looper', 2012),
-(551, b'1', b'0', 'DVDR', ' ', 'Fire with Fire', 2012),
+(551, b'0', b'0', 'DVDR', ' ', 'Fire with Fire', 2012),
 (552, b'1', b'0', 'DVDR', ' ', 'Lay the Favorite', 2012),
 (553, b'1', b'0', 'DVDR', ' ', 'Moonrise Kingdom', 2012),
 (554, b'1', b'0', 'DVD', ' ', 'The Cold Light of Day', 2012),
@@ -1409,18 +1409,18 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (565, b'1', b'0', 'DVD', ' ', 'Alpha Dog', 2006),
 (566, b'1', b'0', 'DVDR', ' ', 'Sin City', 2005),
 (567, b'1', b'0', 'DVD', ' ', 'Hostage', 2005),
-(568, b'1', b'0', 'TV', ' ', 'The Whole Ten Yards', 2004),
+(568, b'1', b'0', 'DVDR', ' ', 'The Whole Ten Yards', 2004),
 (569, b'1', b'0', 'DVDR', ' ', 'Hart\'s War', 2002),
 (570, b'1', b'0', 'DVD', ' ', 'Bandits', 2001),
 (571, b'1', b'0', 'DVDR', ' ', 'The Kid', 2000),
-(572, b'1', b'0', 'TV', ' ', 'The Story of Us', 1999),
+(572, b'0', b'0', 'DVDR', ' ', 'The Story of Us', 1999),
 (573, b'1', b'0', 'DVDR', ' ', 'The Sixth Sense', 1999),
 (574, b'1', b'0', 'DVDR', ' ', 'Breakfast of Champions', 1999),
 (575, b'1', b'0', 'DVD', ' ', 'The Siege', 1998),
 (576, b'1', b'0', 'DVDR', ' ', 'Armageddon', 1998),
 (577, b'0', b'0', 'DVDR', ' ', 'Mercury Rising', 1998),
 (578, b'1', b'0', 'DVDR', ' ', 'The Fifth Element', 1997),
-(579, b'1', b'0', 'TV', ' ', 'Last Man Standing', 1996),
+(579, b'0', b'0', 'DVDR', ' ', 'Last Man Standing', 1996),
 (580, b'1', b'0', 'TV', ' ', 'Die Hard with a Vengeance', 1995),
 (581, b'1', b'0', 'DVDR', ' ', 'Nobody\'s Fool', 1994),
 (582, b'1', b'0', 'DVDR', ' ', 'Color of Night', 1994),
@@ -3217,7 +3217,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (7505, b'0', b'0', '', '', 'Seventh Son', 2015),
 (7506, b'0', b'0', '', '', 'Fifty Shades of Grey', 2015),
 (7507, b'0', b'0', '', '', 'Wild Card', 2015),
-(7508, b'0', b'0', '', '', 'Extract', 2009),
+(7508, b'1', b'0', 'DVDR', '', 'Extract', 2009),
 (7509, b'0', b'0', '', '', 'Watchtower', 2002),
 (7510, b'0', b'0', '', '', 'This Is Where I Leave You', 2014),
 (7511, b'0', b'0', '', '', 'Spread', 2009),
@@ -3446,7 +3446,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (8332, b'0', b'0', '', '', 'In the Line of Duty Manhunt in the Dakotas', 1991),
 (8333, b'0', b'0', '', '', 'Psycho IV The Beginning', 1990),
 (8334, b'0', b'0', '', '', 'Psycho III', 1986),
-(8335, b'0', b'0', '', '', 'The Night They Saved Christmas', 1984),
+(8335, b'0', b'0', 'DVDR', '', 'The Night They Saved Christmas', 1984),
 (8336, b'0', b'0', '', '', 'Psycho II', 1983),
 (8337, b'0', b'0', '', '', 'Lenny', 1974),
 (8338, b'0', b'0', '', '', 'Perfect Obedience', 2014),
@@ -3630,9 +3630,9 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (9296, b'0', b'0', '', '', 'Night and the City', 1992),
 (9297, b'0', b'0', '', '', 'Of Mice and Men', 1992),
 (9298, b'0', b'0', '', '', 'Rapid Fire', 1992),
-(9299, b'0', b'0', '', '', 'A Bronx Tale', 1993),
-(9300, b'0', b'0', '', '', 'Mad Dog and Glory', 1993);
+(9299, b'0', b'0', '', '', 'A Bronx Tale', 1993);
 INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year`) VALUES
+(9300, b'0', b'0', '', '', 'Mad Dog and Glory', 1993),
 (9301, b'0', b'0', '', '', 'In the Line of Duty - Hunt for Justice', 1995),
 (9302, b'0', b'0', '', '', 'Lord of Illusions Directors Cut', 1995),
 (9303, b'0', b'0', '', '', 'Mallrats', 1995),
@@ -3746,7 +3746,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (9946, b'0', b'0', '', '', 'Serendipity', 2001),
 (9947, b'0', b'0', '', '', 'Half Nelson', 2006),
 (9948, b'0', b'0', '', '', 'Tropic Thunder', 2008),
-(9949, b'0', b'0', '', '', 'Jesse Stone: Lost in Paradise', 2015),
+(9949, b'0', b'0', 'DVDR', '', 'Jesse Stone: Lost in Paradise', 2015),
 (9950, b'0', b'0', '', '', '90 Minutes in Heaven', 2015),
 (9951, b'0', b'0', '', '', 'Jeremiah Johnson', 1972),
 (9952, b'0', b'0', '', '', 'Smokey and the Bandit', 1977),
@@ -4033,7 +4033,7 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (11507, b'0', b'0', '', '', 'Deep Impact', 1998),
 (11508, b'0', b'0', '', '', 'De Tweeling', 2002),
 (11509, b'0', b'0', '', 'TV Mini-Series', 'Rose red', 2002),
-(11510, b'0', b'0', '', '', 'The Accountant', 2016),
+(11510, b'0', b'0', 'DVDR', '', 'The Accountant', 2016),
 (11511, b'0', b'0', '', '', 'Pirates of the Caribbean: On Stranger Tides', 2011),
 (11512, b'0', b'0', '', 'TV Mini-Series', 'Kane & Abel', 1985),
 (11513, b'0', b'0', '', '', 'Morgan', 2016),
@@ -4061,8 +4061,21 @@ INSERT INTO `dvd` (`id`, `bonus`, `checked`, `origin`, `remarks`, `title`, `year
 (11535, b'0', b'0', '', '', 'La marraine', 2014),
 (11536, b'1', b'0', 'DVD', 'Regio 1, english subtitles', 'Les loups', 2014),
 (11537, b'0', b'0', '', '', 'Consumed', 2014),
-(11538, b'0', b'0', 'DVDR', NULL, 'Eyes of an Angel', 1991),
-(11539, b'0', b'0', 'DVDR', '', 'Varsity Blues', 1999);
+(11538, b'0', b'0', 'DVDR', '', 'Eyes of an Angel', 1991),
+(11539, b'0', b'0', 'DVDR', '', 'Varsity Blues', 1999),
+(11540, b'0', b'0', 'DVDR', '', 'A Monster Calls', 2016),
+(11541, b'0', b'0', 'DVDR', '', 'In a Valley of Violence', 2016),
+(11542, b'0', b'0', 'DVDR', '', 'Across the Line - The Exodus of Charlie Wright', 2010),
+(11543, b'0', b'0', 'DVDR', '', 'Clerks II', 2006),
+(11544, b'0', b'0', 'DVD', '', 'Hollywoodland', 2006),
+(11545, b'0', b'0', 'DVDR', '', 'Man About Town', 2006),
+(11546, b'0', b'0', 'DVDR', '', 'Aloha', 2015),
+(11547, b'1', b'0', 'DVDR', '', 'The Whole Nine Yards', 2000),
+(11548, b'0', b'0', 'DVDR', '', 'Rock the Kasbah', 2015),
+(11549, b'1', b'0', 'DVDR', '', 'Precious Cargo', 2016),
+(11550, b'0', b'0', 'DVDR', '', 'First Kill', 2017),
+(11551, b'0', b'0', 'DVDR', '', 'Once Upon a Time in Venice', 2017),
+(11552, b'0', b'0', 'DVDR', '', 'The A-Team', 2010);
 
 -- --------------------------------------------------------
 
@@ -5022,7 +5035,10 @@ INSERT INTO `dvd_actors` (`dvd_id`, `actors_id`) VALUES
 (8426, 7),
 (93, 23),
 (11538, 26),
-(11539, 28);
+(11539, 28),
+(11540, 30),
+(11541, 26),
+(11542, 11);
 
 -- --------------------------------------------------------
 
@@ -6191,7 +6207,6 @@ INSERT INTO `dvd_genres` (`dvd_id`, `genres_id`) VALUES
 (452, 1),
 (452, 4),
 (452, 5),
-(453, 2),
 (455, 4),
 (455, 15),
 (454, 22),
@@ -6898,7 +6913,66 @@ INSERT INTO `dvd_genres` (`dvd_id`, `genres_id`) VALUES
 (9928, 6),
 (10746, 6),
 (10746, 10),
-(10746, 14);
+(10746, 14),
+(6384, 4),
+(6384, 6),
+(9949, 5),
+(9949, 6),
+(11540, 6),
+(11540, 8),
+(11541, 1),
+(11541, 5),
+(11541, 6),
+(8335, 6),
+(8335, 7),
+(8335, 8),
+(11510, 1),
+(11510, 5),
+(11510, 6),
+(11542, 5),
+(11542, 6),
+(11543, 4),
+(11544, 3),
+(11544, 5),
+(11544, 6),
+(11545, 4),
+(11545, 6),
+(453, 1),
+(453, 6),
+(453, 8),
+(11546, 4),
+(11546, 6),
+(11546, 15),
+(11547, 4),
+(11547, 5),
+(11548, 4),
+(11548, 11),
+(11548, 19),
+(11549, 1),
+(11549, 4),
+(11549, 5),
+(11550, 1),
+(11550, 14),
+(11551, 1),
+(11551, 5),
+(11551, 14),
+(575, 1),
+(575, 14),
+(115, 1),
+(115, 2),
+(115, 6),
+(103, 5),
+(7508, 4),
+(7508, 5),
+(7508, 15),
+(11552, 1),
+(11552, 2),
+(11552, 4),
+(3697, 5),
+(3697, 6),
+(3697, 14),
+(554, 1),
+(554, 14);
 
 -- --------------------------------------------------------
 
@@ -7128,7 +7202,7 @@ ALTER TABLE `cd`
 -- AUTO_INCREMENT for table `dvd`
 --
 ALTER TABLE `dvd`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11540;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11553;
 --
 -- AUTO_INCREMENT for table `file_import`
 --
